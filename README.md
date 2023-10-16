@@ -1,4 +1,4 @@
-# my-vite-app
+# Frontend Ecommerce Web
 
 ## Project setup
 ```
