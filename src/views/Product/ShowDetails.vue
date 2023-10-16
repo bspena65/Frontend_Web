@@ -22,14 +22,9 @@
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
-            <button
-              type="button"
-              id="add-to-cart-button"
-              class="btn"
-              @click="addToCart(this.id)"
-            >
-            añadir al carrito              
-            <ion-icon name="cart-outline" v-pre></ion-icon>
+            <button type="button" id="add-to-cart-button" class="btn" @click="addToCart(this.id)">
+              añadir al carrito
+              <ion-icon name="cart-outline" v-pre></ion-icon>
             </button>
           </div>
         </div>
@@ -45,22 +40,13 @@
           </ul>
         </div>
 
-        <button
-          id="wishlist-button"
-          class="btn mr-3 p-1 py-0"
-          :class="{ product_added_wishlist: isAddedToWishlist }"
-          @click="addToWishList(this.id)"
-        >
+        <button id="wishlist-button" class="btn mr-3 p-1 py-0" :class="{ product_added_wishlist: isAddedToWishlist }"
+          @click="addToWishList(this.id)">
           {{ wishlistString }}
         </button>
-        
-        <button
-          id="show-cart-button"
-          type="button"
-          class="btn mr-3 p-1 py-0"
-          @click="listCartItems()"
-        >
-        Mostrar carrito
+
+        <button id="show-cart-button" type="button" class="btn mr-3 p-1 py-0" @click="listCartItems()">
+          Mostrar carrito
 
           <ion-icon name="cart-outline" v-pre></ion-icon>
         </button>
@@ -94,7 +80,7 @@ export default {
           (response) => {
             if (response.status == 201) {
               this.isAddedToWishlist = true;
-              this.wishlistString = "Added to WishList";
+              this.wishlistString = "Añadido a la lista de deseos";
             }
           },
           (error) => {

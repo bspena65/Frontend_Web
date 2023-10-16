@@ -16,69 +16,39 @@
           <form @submit="signup" class="pt-4 pl-4 pr-4">
             <div class="form-group">
               <label>Correo electronico</label>
-              <input
-                type="email"
-                class="form-control"
-                v-model="email"
-                required
-              />
+              <input type="email" class="form-control" v-model="email" required />
             </div>
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
                   <label>Apellido</label>
-                  <input
-                    type="name"
-                    class="form-control"
-                    v-model="firstName"
-                    required
-                  />
+                  <input type="name" class="form-control" v-model="firstName" required />
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label>Nombre</label>
-                  <input
-                    type="name"
-                    class="form-control"
-                    v-model="lastName"
-                    required
-                  />
+                  <input type="name" class="form-control" v-model="lastName" required />
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label>Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                v-model="password"
-                required
-              />
+              <input type="password" class="form-control" v-model="password" required />
             </div>
             <div class="form-group">
               <label>Confirmar Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                v-model="passwordConfirm"
-                required
-              />
+              <input type="password" class="form-control" v-model="passwordConfirm" required />
             </div>
             <button type="submit" class="btn btn-primary mt-2 py-0">
               Crear Cuenta
             </button>
           </form>
           <hr />
-          <small class="form-text text-muted pt-2 pl-4 text-center"
-            >¿Ya tienes una cuenta?</small
-          >
+          <small class="form-text text-muted pt-2 pl-4 text-center">¿Ya tienes una cuenta?</small>
           <p class="text-center">
-            <router-link
-              class="btn btn-dark text-center mx-auto px-5 py-1 mb-2"
-              :to="{ name: 'Signin' }"
-              >Inicia Sesion aqui</router-link
-            >
+            <router-link class="btn btn-dark text-center mx-auto px-5 py-1 mb-2" :to="{ name: 'Signin' }">Inicia Sesion
+              aqui</router-link>
           </p>
         </div>
       </div>
@@ -164,7 +134,7 @@ export default {
 
 #logo {
   width: 200px;
-  margin-bottom: -20px ;
+  margin-bottom: -20px;
 
 }
 

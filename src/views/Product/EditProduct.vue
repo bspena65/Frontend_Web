@@ -13,7 +13,8 @@
           <div class="form-group">
             <label>Categoria</label>
             <select class="form-control" v-model="product.categoryId" required>
-              <option v-for="category of categories" :key="category.id" :value="category.id">{{category.categoryName}}</option>
+              <option v-for="category of categories" :key="category.id" :value="category.id">{{ category.categoryName }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -42,31 +43,31 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       product: null
     }
   },
-  props : ["baseURL", "products", "categories"],
-  methods : {
+  props: ["baseURL", "products", "categories"],
+  methods: {
     async editProduct() {
-      axios.post(this.baseURL+"product/update/"+this.id, this.product)
-      .then(res => {
-        //sending the event to parent to handle
-        this.$emit("fetchData");
-        this.$router.push({name : 'AdminProduct'});
-        swal({
-          text: "¡Producto actualizado exitosamente!",
-          icon: "success",
-          closeOnClickOutside: false,
-        });
-      })
-      .catch(err => console.log("err", err));
+      axios.post(this.baseURL + "product/update/" + this.id, this.product)
+        .then(res => {
+          //sending the event to parent to handle
+          this.$emit("fetchData");
+          this.$router.push({ name: 'AdminProduct' });
+          swal({
+            text: "¡Producto actualizado exitosamente!",
+            icon: "success",
+            closeOnClickOutside: false,
+          });
+        })
+        .catch(err => console.log("err", err));
     }
   },
   mounted() {
     if (!localStorage.getItem('token')) {
-      this.$router.push({name : 'Signin'});
+      this.$router.push({ name: 'Signin' });
       return;
     }
     this.id = this.$route.params.id;
@@ -81,5 +82,4 @@ h4 {
   color: #484848;
   font-weight: 700;
 }
-
 </style>

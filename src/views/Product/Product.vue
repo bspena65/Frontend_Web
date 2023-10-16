@@ -3,16 +3,17 @@
     <div class="row">
       <div class="col-12 text-center">
         <h4 class="pt-3">Nuestros Productos</h4>
-        <router-link id="add-product" :to="{name : 'AddProduct'}" v-show="$route.name=='AdminProduct'">
+        <router-link id="add-product" :to="{ name: 'AddProduct' }" v-show="$route.name == 'AdminProduct'">
           <button class="btn">Agregar un nuevo Producto</button>
         </router-link>
       </div>
     </div>
     <div class="row">
-        <div v-for="product of products" :key="product.id" class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
-          <ProductBox :product="product">
-          </ProductBox>
-        </div>
+      <div v-for="product of products" :key="product.id"
+        class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
+        <ProductBox :product="product">
+        </ProductBox>
+      </div>
     </div>
   </div>
 </template>
@@ -21,11 +22,11 @@
 import ProductBox from '../../components/Product/ProductBox';
 export default {
   name: 'Product',
-  components : {ProductBox},
-  props : [ "baseURL" , "products" ],
-  mounted(){
-    if (this.$route.name=='AdminProduct' && !localStorage.getItem('token')) {
-      this.$router.push({name : 'Signin'});
+  components: { ProductBox },
+  props: ["baseURL", "products"],
+  mounted() {
+    if (this.$route.name == 'AdminProduct' && !localStorage.getItem('token')) {
+      this.$router.push({ name: 'Signin' });
     }
   }
 }

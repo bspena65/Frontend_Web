@@ -1,4 +1,4 @@
-# ecommerce-ui-product-category
+# ecommerce 
 
 ```
 The base URL of API is present in App.vue

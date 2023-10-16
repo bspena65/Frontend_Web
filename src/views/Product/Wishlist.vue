@@ -7,8 +7,8 @@
     </div>
 
     <div class="row">
-      <div v-for="product of products" :key="product.id" 
-      class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
+      <div v-for="product of products" :key="product.id"
+        class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
         <ProductBox :product="product">
         </ProductBox>
       </div>
@@ -20,15 +20,15 @@
 import ProductBox from '../../components/Product/ProductBox';
 export default {
   data() {
-      return {
-          products:null,
-          token:null
-      }
+    return {
+      products: null,
+      token: null
+    }
   },
   name: 'Product',
-  components : {ProductBox},
-  props : [ "baseURL"],
-  methods : {
+  components: { ProductBox },
+  props: ["baseURL"],
+  methods: {
     fetchWishlist() {
 
       // fetch products
@@ -38,9 +38,9 @@ export default {
     }
   },
   mounted() {
-        this.token = localStorage.getItem('token');
-        this.fetchWishlist();
-    }
+    this.token = localStorage.getItem('token');
+    this.fetchWishlist();
+  }
 }
 </script>
 
