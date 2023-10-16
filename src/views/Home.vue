@@ -75,7 +75,7 @@
   }
 
   #background-div {
-    background: url(../assets/home.jpg)
+    background: url(../assets/HomeEcommerce.png)
   }
 
   #heading {
