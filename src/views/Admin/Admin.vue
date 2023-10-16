@@ -1,13 +1,10 @@
 <template>
-  <div class="adminPanel container">
-      <router-link :to="{name : 'AdminProduct'}">
-        <button type="button" class="btn btn-primary btn-lg">Crear Productos</button>
-      </router-link>
-      <router-link :to="{name : 'AdminCategory'}">
+  <div class="adminPanel">
+    <router-link :to="{name : 'AdminCategory'}">
         <button type="button" class="btn btn-primary btn-lg">Crear Categorias</button>
       </router-link>
-      <router-link :to="{name : 'Gallery'}">
-        <button type="button" class="btn btn-primary btn-lg">Subir Imagen</button>
+      <router-link :to="{name : 'AdminProduct'}">
+        <button type="button" class="btn btn-primary btn-lg">Crear Productos</button>
       </router-link>
   </div>
 </template>
@@ -25,16 +22,19 @@ export default {
 <style >
 
 
+
 .adminPanel{
   display : flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 110px;
+ 
 }
 .adminPanel button{
   font-size: 30px;
   width: fit-content;
-  border-radius: 50px;
-  margin: 30px 20px;
+  border-radius: 10px;
+  margin: 30px 30px;
 }
 
 
