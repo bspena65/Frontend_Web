@@ -3,7 +3,9 @@
     <!--    Logo Div-->
     <div class="row">
       <div class="col-12 text-center pt-3">
- 
+        <router-link :to="{ name: 'Home' }">
+          <img id="logo" src="../assets/LogoFinal.png" />
+        </router-link>
       </div>
     </div>
 
@@ -31,7 +33,7 @@
               />
             </div>
             <small class="form-text text-muted"
-              >Al continuar, aceptas las Condiciones de uso de xxxx y
+              >Al continuar, aceptas las Condiciones de uso de Sports Store y
               Aviso de Privacidad.</small
             >
             <button type="submit" class="btn btn-primary mt-2 py-0">
@@ -41,7 +43,7 @@
                 class="spinner-border spinner-border-sm"
                 role="status"
               >
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only">Cargando...</span>
               </div>
             </button>
           </form>
@@ -63,12 +65,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import swal from 'sweetalert';
-
-
 export default {
-  name: "sign-in",
+  name: "Signin",
   props: ["baseURL"],
   data() {
     return {
@@ -92,11 +90,11 @@ export default {
         .then((res) => {
           localStorage.setItem("token", res.data.token);
           this.$emit("fetchData");
-          //this.$router.push({ name: "Home" });
+          this.$router.push({ name: "Home" });
         })
         .catch((err) => {
           swal({
-            text: "Unable to Log you in!",
+            text: "¡Error en credenciales, verifique e intente de nuevo!",
             icon: "error",
             closeOnClickOutside: false,
           });

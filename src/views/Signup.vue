@@ -3,7 +3,9 @@
     <!--    Logo Div-->
     <div class="row">
       <div class="col-12 text-center pt-3">
-
+        <router-link :to="{ name: 'Home' }">
+          <img id="logo" src="../assets/Logo1.1.png" />
+        </router-link>
       </div>
     </div>
 
@@ -24,7 +26,7 @@
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
-                  <label>Nombre</label>
+                  <label>Apellido</label>
                   <input
                     type="name"
                     class="form-control"
@@ -35,7 +37,7 @@
               </div>
               <div class="col">
                 <div class="form-group">
-                  <label>Apellido</label>
+                  <label>Nombre</label>
                   <input
                     type="name"
                     class="form-control"
@@ -85,12 +87,8 @@
 </template>
 
 <script>
-
-import axios from 'axios'
-import swal from 'sweetalert'
-
 export default {
-  name: "sign-up",
+  name: "Signup",
   props: ["baseURL"],
   data() {
     return {
@@ -121,7 +119,7 @@ export default {
             // redirect to home page
             this.$router.replace("/");
             swal({
-              text: "User signup successful. Please Login",
+              text: "Registro de usuario exitoso. Por favor Iniciar sesión",
               icon: "success",
               closeOnClickOutside: false,
             });
@@ -132,7 +130,7 @@ export default {
       } else {
         // passwords are not matching
         swal({
-          text: "Error! Passwords are not matching",
+          text: "¡Error! Las contraseñas no coinciden",
           icon: "error",
           closeOnClickOutside: false,
         });

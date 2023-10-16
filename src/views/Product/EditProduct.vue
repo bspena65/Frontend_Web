@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4 class="pt-3">Edit Product</h4>
+        <h4 class="pt-3">Editar producto</h4>
       </div>
     </div>
 
@@ -11,25 +11,25 @@
       <div class="col-md-6 px-5 px-md-0">
         <form v-if="product">
           <div class="form-group">
-            <label>Category</label>
+            <label>Categoria</label>
             <select class="form-control" v-model="product.categoryId" required>
               <option v-for="category of categories" :key="category.id" :value="category.id">{{category.categoryName}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Name</label>
+            <label>Nombre</label>
             <input type="text" class="form-control" v-model="product.name" required>
           </div>
           <div class="form-group">
-            <label>Description</label>
+            <label>Descripcion</label>
             <input type="text" class="form-control" v-model="product.description" required>
           </div>
           <div class="form-group">
-            <label>ImageURL</label>
+            <label>Imagen</label>
             <input type="url" class="form-control" v-model="product.imageURL" required>
           </div>
           <div class="form-group">
-            <label>Price</label>
+            <label>Precio</label>
             <input type="number" class="form-control" v-model="product.price" required>
           </div>
           <button type="button" class="btn btn-primary" @click="editProduct">Submit</button>
@@ -56,7 +56,7 @@ export default {
         this.$emit("fetchData");
         this.$router.push({name : 'AdminProduct'});
         swal({
-          text: "Product Updated Successfully!",
+          text: "¡Producto actualizado exitosamente!",
           icon: "success",
           closeOnClickOutside: false,
         });

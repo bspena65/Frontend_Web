@@ -16,7 +16,7 @@
         <div class="d-flex flex-row justify-content-between">
           <div class="input-group col-md-3 col-4 p-0">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Quantity</span>
+              <span class="input-group-text" id="basic-addon1">Cantidad</span>
             </div>
             <input class="form-control" type="number" v-bind:value="quantity" />
           </div>
@@ -28,14 +28,14 @@
               class="btn"
               @click="addToCart(this.id)"
             >
-              Add to Cart
-              <ion-icon name="cart-outline" v-pre></ion-icon>
+            añadir al carrito              
+            <ion-icon name="cart-outline" v-pre></ion-icon>
             </button>
           </div>
         </div>
 
         <div class="features pt-3">
-          <h5><strong>Features</strong></h5>
+          <h5><strong>Características</strong></h5>
           <ul>
             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
             <li>Officia quas, officiis eius magni error magnam voluptatem</li>
@@ -53,13 +53,14 @@
         >
           {{ wishlistString }}
         </button>
+        
         <button
           id="show-cart-button"
           type="button"
           class="btn mr-3 p-1 py-0"
           @click="listCartItems()"
         >
-          Show Cart
+        Mostrar carrito
 
           <ion-icon name="cart-outline" v-pre></ion-icon>
         </button>
@@ -78,7 +79,7 @@ export default {
       id: null,
       token: null,
       isAddedToWishlist: false,
-      wishlistString: "Add to wishlist",
+      wishlistString: "Añadir a la lista de deseos",
       quantity: 1,
     };
   },
@@ -104,7 +105,7 @@ export default {
     addToCart(productId) {
       if (!this.token) {
         swal({
-          text: "Please log in first!",
+          text: "¡Por favor ingresa primero!",
           icon: "error",
         });
         return;
@@ -118,7 +119,7 @@ export default {
           (response) => {
             if (response.status == 201) {
               swal({
-                text: "Product Added to the cart!",
+                text: "Producto añadido al carrito!",
                 icon: "success",
                 closeOnClickOutside: false,
               });

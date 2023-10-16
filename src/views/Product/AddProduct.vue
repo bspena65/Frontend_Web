@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4 class="pt-3">Add new Product</h4>
+        <h4 class="pt-3">Agregar nuevo Producto</h4>
       </div>
     </div>
 
@@ -11,25 +11,25 @@
       <div class="col-md-6 px-5 px-md-0">
         <form>
           <div class="form-group">
-            <label>Category</label>
+            <label>Categoria</label>
             <select class="form-control" v-model="categoryId" required>
               <option v-for="category of categories" :key="category.id" :value="category.id">{{category.categoryName}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Name</label>
+            <label>Nombre</label>
             <input type="text" class="form-control" v-model="name" required>
           </div>
           <div class="form-group">
-            <label>Description</label>
+            <label>Descripcion</label>
             <input type="text" class="form-control" v-model="description" required>
           </div>
           <div class="form-group">
-            <label>ImageURL</label>
+            <label>Imagen</label>
             <input type="url" class="form-control" v-model="imageURL" required>
           </div>
           <div class="form-group">
-            <label>Price</label>
+            <label>Pecio</label>
             <input type="number" class="form-control" v-model="price" required>
           </div>
           <button type="button" class="btn btn-primary" @click="addProduct">Submit</button>
@@ -77,7 +77,7 @@ export default {
         this.$emit("fetchData");
         this.$router.push({name : 'AdminProduct'});
         swal({
-          text: "Product Added Successfully!",
+          text: "¡Producto agregado exitosamente!",
           icon: "success",
           closeOnClickOutside: false,
         });

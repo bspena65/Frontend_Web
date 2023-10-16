@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg mynav">
-    <!--    Logo-->
+    <!--Logo-->
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
       <img id="logo" src="../assets/Logo1.1.png" />
     </router-link>
@@ -153,7 +153,7 @@ export default {
       this.$emit("resetCartCount");
       this.$router.push({ name: "Home" });
       swal({
-        text: "Logged you out. Visit Again",
+        text: "Cierre de sesion exitoso",
         icon: "success",
         closeOnClickOutside: false,
       });
