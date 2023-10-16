@@ -13,7 +13,8 @@
           <div class="form-group">
             <label>Categoria</label>
             <select class="form-control" v-model="categoryId" required>
-              <option v-for="category of categories" :key="category.id" :value="category.id">{{category.categoryName}}</option>
+              <option v-for="category of categories" :key="category.id" :value="category.id">{{ category.categoryName }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -42,52 +43,52 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      id : null,
-      categoryId : null,
-      name : null,
-      description : null,
-      imageURL : null,
-      price : null
+      id: null,
+      categoryId: null,
+      name: null,
+      description: null,
+      imageURL: null,
+      price: null
     }
   },
-  props : ["baseURL", "products", "categories"],
-  methods : {
+  props: ["baseURL", "products", "categories"],
+  methods: {
     async addProduct() {
       const newProduct = {
-        id : this.id,
-        categoryId : this.categoryId,
-        name : this.name,
-        description : this.description,
-        imageURL : this.imageURL,
-        price : this.price
+        id: this.id,
+        categoryId: this.categoryId,
+        name: this.name,
+        description: this.description,
+        imageURL: this.imageURL,
+        price: this.price
       }
 
       await axios({
         method: 'post',
-        url: this.baseURL+"product/add",
-        data : JSON.stringify(newProduct),
+        url: this.baseURL + "product/add",
+        data: JSON.stringify(newProduct),
         headers: {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => {
-        //sending the event to parent to handle
-        this.$emit("fetchData");
-        this.$router.push({name : 'AdminProduct'});
-        swal({
-          text: "¡Producto agregado exitosamente!",
-          icon: "success",
-          closeOnClickOutside: false,
-        });
-      })
-      .catch(err => console.log(err));
+        .then(res => {
+          //sending the event to parent to handle
+          this.$emit("fetchData");
+          this.$router.push({ name: 'AdminProduct' });
+          swal({
+            text: "¡Producto agregado exitosamente!",
+            icon: "success",
+            closeOnClickOutside: false,
+          });
+        })
+        .catch(err => console.log(err));
     }
   },
   mounted() {
     if (!localStorage.getItem('token')) {
-      this.$router.push({name : 'Signin'});
+      this.$router.push({ name: 'Signin' });
     }
   }
 }
@@ -99,5 +100,4 @@ h4 {
   color: #484848;
   font-weight: 700;
 }
-
 </style>

@@ -3,13 +3,14 @@
     <div class="row">
       <div class="col-12 text-center">
         <h4 class="pt-3">Nuestras Categorías</h4>
-        <router-link id="add-category" :to="{name : 'AddCategory'}" v-show="$route.name=='AdminCategory'">
+        <router-link id="add-category" :to="{ name: 'AddCategory' }" v-show="$route.name == 'AdminCategory'">
           <button class="btn">Agregar una nueva categoria</button>
         </router-link>
       </div>
     </div>
     <div class="row">
-      <div v-for="category of categories" :key="category.id" class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
+      <div v-for="category of categories" :key="category.id"
+        class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
         <CategoryBox :category="category">
         </CategoryBox>
       </div>
@@ -21,11 +22,11 @@
 import CategoryBox from '../../components/Category/CategoryBox';
 export default {
   name: 'Category',
-  components : {CategoryBox},
-  props : [ "baseURL" , "categories" ],
-  mounted(){
-    if (this.$route.name=='AdminCategory' && !localStorage.getItem('token')) {
-      this.$router.push({name : 'Signin'});
+  components: { CategoryBox },
+  props: ["baseURL", "categories"],
+  mounted() {
+    if (this.$route.name == 'AdminCategory' && !localStorage.getItem('token')) {
+      this.$router.push({ name: 'Signin' });
     }
   }
 }

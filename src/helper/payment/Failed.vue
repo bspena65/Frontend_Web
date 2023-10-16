@@ -8,8 +8,8 @@
 
 <script>
 export default {
-    name:'FailedPayment',
-    mounted(){
+    name: 'FailedPayment',
+    mounted() {
         localStorage.removeItem("sessionId")
         window.location.href = '/order'
     }

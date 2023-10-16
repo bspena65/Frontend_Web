@@ -32,32 +32,32 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       category: null
     }
   },
-  props : ["baseURL", "categories"],
-  methods : {
+  props: ["baseURL", "categories"],
+  methods: {
     async editCategory() {
       delete this.category["products"]
-      await axios.post(this.baseURL+"category/update/"+this.id, this.category)
-      .then(res => {
+      await axios.post(this.baseURL + "category/update/" + this.id, this.category)
+        .then(res => {
           //sending the event to parent to handle
-        this.$emit("fetchData");
-        this.$router.push({name:'AdminCategory'});
-        swal({
-          text: "¡Categoría actualizada correctamente!",
-          icon: "success",
-          closeOnClickOutside: false,
-        });
-      })
-      .catch(err => console.log(err));
+          this.$emit("fetchData");
+          this.$router.push({ name: 'AdminCategory' });
+          swal({
+            text: "¡Categoría actualizada correctamente!",
+            icon: "success",
+            closeOnClickOutside: false,
+          });
+        })
+        .catch(err => console.log(err));
     }
   },
   mounted() {
     if (!localStorage.getItem('token')) {
-      this.$router.push({name : 'Signin'});
+      this.$router.push({ name: 'Signin' });
       return;
     }
     this.id = this.$route.params.id;
