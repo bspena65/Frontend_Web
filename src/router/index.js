@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/Home/Home.vue'
 
 import Admin from '../views/Admin/Admin.vue'
 
@@ -18,8 +18,8 @@ import Category from '../views/Category/Category.vue'
 import AddCategory from '../views/Category/AddCategory.vue'
 import EditCategory from '../views/Category/EditCategory.vue'
 import ListProducts from '../views/Category/ListProducts.vue'
-import Signup from '../views/Signup.vue'
-import Signin from '../views/Signin.vue'
+import Signup from '../views/Home/Signup.vue'
+import Signin from '../views/Home/Signin.vue'
 
 import Success from '../helper/payment/Success.vue'
 import Failed from '../helper/payment/Failed.vue'

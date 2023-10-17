@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import ProductBox from "../components/Product/ProductBox";
-import CategoryBox from "../components/Category/CategoryBox";
+import ProductBox from "../../components/Product/ProductBox";
+import CategoryBox from "../../components/Category/CategoryBox";
 export default {
   name: 'Home',
   components: { ProductBox, CategoryBox },
@@ -79,7 +79,7 @@ export default {
 }
 
 #background-div {
-  background: url(../assets/HomeEcommerce.png)
+  background: url(../../assets/HomeEcommerce.png)
 }
 
 #heading {
