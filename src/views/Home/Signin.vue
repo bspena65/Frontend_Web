@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12 text-center pt-3">
         <router-link :to="{ name: 'Home' }">
-          <img id="logo" src="../assets/LogoFinal.png" />
+          <img id="logo" src="../../assets/LogoFinal.png" />
         </router-link>
       </div>
     </div>
@@ -16,47 +16,26 @@
           <form @submit="signin" class="pt-4 pl-4 pr-4">
             <div class="form-group">
               <label>Correo</label>
-              <input
-                type="email"
-                class="form-control"
-                v-model="email"
-                required
-              />
+              <input type="email" class="form-control" v-model="email" required />
             </div>
             <div class="form-group">
               <label>Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                v-model="password"
-                required
-              />
+              <input type="password" class="form-control" v-model="password" required />
             </div>
-            <small class="form-text text-muted"
-              >Al continuar, aceptas las Condiciones de uso de Sports Store y
-              Aviso de Privacidad.</small
-            >
+            <small class="form-text text-muted">Al continuar, aceptas las Condiciones de uso de Sports Store y
+              Aviso de Privacidad.</small>
             <button type="submit" class="btn btn-primary mt-2 py-0">
               Iniciar
-              <div
-                v-if="loading"
-                class="spinner-border spinner-border-sm"
-                role="status"
-              >
+              <div v-if="loading" class="spinner-border spinner-border-sm" role="status">
                 <span class="sr-only">Cargando...</span>
               </div>
             </button>
           </form>
           <hr />
-          <small class="form-text text-muted pt-2 pl-4 text-center"
-            >¿Nuevo en Sports Store?</small
-          >
+          <small class="form-text text-muted pt-2 pl-4 text-center">¿Nuevo en Sports Store?</small>
           <p class="text-center">
-            <router-link
-              :to="{ name: 'Signup' }"
-              class="btn btn-dark text-center mx-auto px-5 py-1 mb-2"
-              >Cree su cuenta aqui</router-link
-            >
+            <router-link :to="{ name: 'Signup' }" class="btn btn-dark text-center mx-auto px-5 py-1 mb-2">Cree su cuenta
+              aqui</router-link>
           </p>
         </div>
       </div>
@@ -112,8 +91,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .btn-dark {
   background-color: #e7e9ec;
   color: #000;
@@ -137,7 +114,7 @@ export default {
 
 #logo {
   width: 200px;
-  margin-bottom: -20px ;
+  margin-bottom: -20px;
 }
 
 @media only screen and (min-width: 992px) {

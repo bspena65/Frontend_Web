@@ -45,16 +45,15 @@
 
 <script>
 export default {
-  name : "Footer"
+  name: "Footer"
 }
 </script>
 
 <style>
-
 footer {
-  margin-top : 100px;
-  background-color:#0c5564;
-  font-size:14px;
+  margin-top: 100px;
+  background-color: #0c5564;
+  font-size: 14px;
   font-family: 'Roboto', sans-serif;
 
 }
@@ -63,6 +62,7 @@ li {
   padding-left: 10px;
   padding-bottom: 10px;
   display: flex;
+
   justify-content: center;
 }
 
@@ -77,6 +77,4 @@ a {
 #logo {
   width: 150px;
 }
-
-
 </style>

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/Home/Home.vue'
 
 import Admin from '../views/Admin/Admin.vue'
 
@@ -18,8 +18,8 @@ import Category from '../views/Category/Category.vue'
 import AddCategory from '../views/Category/AddCategory.vue'
 import EditCategory from '../views/Category/EditCategory.vue'
 import ListProducts from '../views/Category/ListProducts.vue'
-import Signup from '../views/Signup.vue'
-import Signin from '../views/Signin.vue'
+import Signup from '../views/Home/Signup.vue'
+import Signin from '../views/Home/Signin.vue'
 
 import Success from '../helper/payment/Success.vue'
 import Failed from '../helper/payment/Failed.vue'
@@ -61,8 +61,8 @@ const routes = [
     component: EditProduct,
   },
   {
-    path : '/product/show/:id',
-    name : 'ShowDetails',
+    path: '/product/show/:id',
+    name: 'ShowDetails',
     component: ShowDetails
   },
   //Category routes
@@ -87,15 +87,15 @@ const routes = [
     component: EditCategory
   },
   {
-    path : '/category/show/:id',
-    name : 'ListProducts',
+    path: '/category/show/:id',
+    name: 'ListProducts',
     component: ListProducts
   },
   //Page Not found
   {
-    path : '/:catchAll(.*)',
-    name : 'PageNotFound',
-    component : PageNotFound
+    path: '/:catchAll(.*)',
+    name: 'PageNotFound',
+    component: PageNotFound
   },
   //Signin and Signup
   {
@@ -114,33 +114,33 @@ const routes = [
     component: Wishlist
   },
   {
-    path : '/cart',
-    name : 'Cart',
-    component : Cart
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   },
   {
-    path : '/checkout',
-    name : 'Checkout',
-    component : Checkout
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout
   },
   {
-    path : '/order',
-    name : 'Order',
-    component : Order
+    path: '/order',
+    name: 'Order',
+    component: Order
   },
   {
     path: '/payment/success',
     name: 'PaymentSuccess',
-    component:Success
+    component: Success
   },
   {
     path: '/payment/failed',
     name: 'FailedPayment',
-    component:Failed
+    component: Failed
   },
   {
-    path:'/order/:id',
-    name:'OrderDetails',
+    path: '/order/:id',
+    name: 'OrderDetails',
     component: OrderDetails
   }
 ]
