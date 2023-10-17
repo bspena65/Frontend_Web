@@ -33,7 +33,7 @@
             <label>Pecio</label>
             <input type="number" class="form-control" v-model="price" required>
           </div>
-          <button type="button" class="btn btn-primary" @click="addProduct">Submit</button>
+          <button type="button" class="btn btn-primary" @click="addProduct">Crear Producto</button>
         </form>
       </div>
       <div class="col-3"></div>
