@@ -60,18 +60,22 @@
 export default {
   data() {
     return {
-      product: {},
-      category: {},
-      id: null,
-      token: null,
-      isAddedToWishlist: false,
-      wishlistString: "Añadir a la lista de deseos",
-      quantity: 1,
+      // Inicializa las variables del componente
+      product: {},           // Almacena los datos del producto
+      category: {},          // Almacena los datos de la categoría del producto
+      id: null,              // Almacena el ID del producto actual
+      token: null,           // Almacena el token de autenticación del usuario
+      isAddedToWishlist: false, // Bandera para controlar si se ha añadido a la lista de deseos
+      wishlistString: "Añadir a la lista de deseos", // Etiqueta del botón de lista de deseos
+      quantity: 1,           // Almacena la cantidad de productos a agregar al carrito
     };
   },
+  // Define las propiedades esperadas que se pasan al componente
   props: ["baseURL", "products", "categories"],
   methods: {
+    // Método para agregar un producto a la lista de deseos
     addToWishList(productId) {
+      // Realiza una solicitud POST al servidor para añadir a la lista de deseos
       axios
         .post(`${this.baseURL}wishlist/add?token=${this.token}`, {
           id: productId,
@@ -79,7 +83,7 @@ export default {
         .then(
           (response) => {
             if (response.status == 201) {
-              this.isAddedToWishlist = true;
+              this.isAddedToWishlist = true; // Producto añadido a la lista de deseos
               this.wishlistString = "Añadido a la lista de deseos";
             }
           },
@@ -88,14 +92,17 @@ export default {
           }
         );
     },
+    // Método para agregar un producto al carrito
     addToCart(productId) {
       if (!this.token) {
+        // Si el usuario no está autenticado, muestra un mensaje de error
         swal({
           text: "¡Por favor ingresa primero!",
           icon: "error",
         });
         return;
       }
+      // Realiza una solicitud POST al servidor para añadir un producto al carrito
       axios
         .post(`${this.baseURL}cart/add?token=${this.token}`, {
           productId: productId,
@@ -109,7 +116,7 @@ export default {
                 icon: "success",
                 closeOnClickOutside: false,
               });
-              // refresh nav bar
+              // Actualiza la barra de navegación llamando al evento personalizado "fetchData"
               this.$emit("fetchData");
             }
           },
@@ -118,12 +125,13 @@ export default {
           }
         );
     },
-
+    // Método para ver los elementos del carrito
     listCartItems() {
+      // Realiza una solicitud GET al servidor para obtener los elementos del carrito
       axios.get(`${this.baseURL}cart/?token=${this.token}`).then(
         (response) => {
           if (response.status === 200) {
-            this.$router.push("/cart");
+            this.$router.push("/cart"); // Redirige a la página del carrito
           }
         },
         (error) => {
@@ -132,22 +140,29 @@ export default {
       );
     },
   },
+  // El gancho "mounted" se ejecuta cuando el componente está montado
   mounted() {
+    // Obtiene el ID del producto actual a través de los parámetros de ruta
     this.id = this.$route.params.id;
+    // Busca el producto en la lista de productos utilizando su ID
     this.product = this.products.find((product) => product.id == this.id);
+    // Busca la categoría del producto en la lista de categorías
     this.category = this.categories.find(
       (category) => category.id == this.product.categoryId
     );
+    // Obtiene el token de autenticación del usuario del almacenamiento local
     this.token = localStorage.getItem("token");
   },
 };
 </script>
+
 
 <style>
 .category {
   font-weight: 400;
 }
 
+/* Estilos para ocultar los botones de incremento y decremento de los input tipo número en navegadores específicos */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -155,10 +170,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
+/* Firefox 
 input[type="number"] {
   -moz-appearance: textfield;
-}
+}*/
 
 #add-to-cart-button {
   background-color: #febd69;
