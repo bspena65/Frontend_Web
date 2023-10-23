@@ -15,12 +15,12 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-
+      
+      <!-- Indicadores del Carrusel -->
       <ol class="carousel-indicators">
+        <!-- Indicador para la primera diapositiva (índice 0), marcado como activo -->
         <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#imageCarousel" data-slide-to="1"></li>
-        <li data-target="#imageCarousel" data-slide-to="2"></li>
-        <li data-target="#imageCarousel" data-slide-to="3"></li>
+        
       </ol>
 
 
