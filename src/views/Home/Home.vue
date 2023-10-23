@@ -20,6 +20,12 @@
       <ol class="carousel-indicators">
         <!-- Indicador para la primera diapositiva (índice 0), marcado como activo -->
         <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+        <!-- Indicador para la segunda diapositiva (índice 1) -->
+        <li data-target="#imageCarousel" data-slide-to="1"></li>
+        <!-- Indicador para la tercera diapositiva (índice 2) -->
+        <li data-target="#imageCarousel" data-slide-to="2"></li>
+        <!-- Indicador para la cuarta diapositiva (índice 3) -->
+        <li data-target="#imageCarousel" data-slide-to="3"></li>
         
       </ol>
 
