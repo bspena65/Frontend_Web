@@ -61,6 +61,7 @@ export default {
     // Define el método "addProduct"
     async addProduct() {
       // Crea un objeto "newProduct" con los datos del nuevo producto
+
       const newProduct = {
         id: this.id,
         categoryId: this.categoryId,
@@ -71,6 +72,7 @@ export default {
       }
 
       // Realiza una solicitud POST para agregar el nuevo producto al servidor
+
       await axios({
         method: 'post',
         url: this.baseURL + "product/add",
@@ -85,6 +87,7 @@ export default {
           // Redirige al usuario a la página 'AdminProduct'
           this.$router.push({ name: 'AdminProduct' });
           // Muestra un mensaje de éxito utilizando SweetAlert2
+
           swal({
             text: "¡Producto agregado exitosamente!",
             icon: "success",
@@ -99,6 +102,7 @@ export default {
     // Comprueba si no hay un token de autenticación en el almacenamiento local
     if (!localStorage.getItem('token')) {
       // Redirige al usuario a la página 'Signin'
+
       this.$router.push({ name: 'Signin' });
     }
   }

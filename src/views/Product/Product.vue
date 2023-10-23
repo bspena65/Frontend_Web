@@ -34,6 +34,7 @@ export default {
     // Comprueba si el nombre de la ruta actual es 'AdminProduct' y si no hay un token de autenticación en el almacenamiento local
     if (this.$route.name == 'AdminProduct' && !localStorage.getItem('token')) {
       // Redirige al usuario a la página 'Signin'
+
       this.$router.push({ name: 'Signin' });
     }
   }

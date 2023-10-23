@@ -38,6 +38,7 @@ export default {
     // Método para recuperar la lista de deseos del usuario
     fetchWishlist() {
       // Realiza una solicitud GET al servidor para obtener la lista de deseos del usuario
+
       axios.get(`${this.baseURL}wishlist/${this.token}`)
         .then(data => this.products = data.data)
         .catch(err => console.log(err));
@@ -48,11 +49,11 @@ export default {
     // Obtiene el token de autenticación del usuario del almacenamiento local
     this.token = localStorage.getItem('token');
     // Llama al método "fetchWishlist" para recuperar la lista de deseos del usuario
+
     this.fetchWishlist();
   }
 }
 </script>
-
 
 <style scoped>
 h4 {

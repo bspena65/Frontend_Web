@@ -76,6 +76,7 @@ export default {
     // Método para agregar un producto a la lista de deseos
     addToWishList(productId) {
       // Realiza una solicitud POST al servidor para añadir a la lista de deseos
+
       axios
         .post(`${this.baseURL}wishlist/add?token=${this.token}`, {
           id: productId,
@@ -84,6 +85,7 @@ export default {
           (response) => {
             if (response.status == 201) {
               this.isAddedToWishlist = true; // Producto añadido a la lista de deseos
+
               this.wishlistString = "Añadido a la lista de deseos";
             }
           },
@@ -96,6 +98,7 @@ export default {
     addToCart(productId) {
       if (!this.token) {
         // Si el usuario no está autenticado, muestra un mensaje de error
+
         swal({
           text: "¡Por favor ingresa primero!",
           icon: "error",
@@ -103,6 +106,7 @@ export default {
         return;
       }
       // Realiza una solicitud POST al servidor para añadir un producto al carrito
+
       axios
         .post(`${this.baseURL}cart/add?token=${this.token}`, {
           productId: productId,
@@ -117,6 +121,7 @@ export default {
                 closeOnClickOutside: false,
               });
               // Actualiza la barra de navegación llamando al evento personalizado "fetchData"
+
               this.$emit("fetchData");
             }
           },
@@ -132,6 +137,7 @@ export default {
         (response) => {
           if (response.status === 200) {
             this.$router.push("/cart"); // Redirige a la página del carrito
+
           }
         },
         (error) => {
@@ -151,6 +157,7 @@ export default {
       (category) => category.id == this.product.categoryId
     );
     // Obtiene el token de autenticación del usuario del almacenamiento local
+
     this.token = localStorage.getItem("token");
   },
 };
@@ -163,6 +170,7 @@ export default {
 }
 
 /* Estilos para ocultar los botones de incremento y decremento de los input tipo número en navegadores específicos */
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -174,6 +182,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }*/
+
 
 #add-to-cart-button {
   background-color: #febd69;

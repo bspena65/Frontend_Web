@@ -34,6 +34,7 @@
             <input type="number" class="form-control" v-model="product.price" required>
           </div>
           <button type="button" class="btn btn-primary" @click="editProduct">Guardar</button>
+
         </form>
       </div>
       <div class="col-3"></div>
@@ -62,6 +63,7 @@ export default {
           // Redirige al usuario a la página 'AdminProduct'
           this.$router.push({ name: 'AdminProduct' });
           // Muestra un mensaje de éxito utilizando SweetAlert2
+
           swal({
             text: "¡Producto actualizado exitosamente!",
             icon: "success",
@@ -82,6 +84,7 @@ export default {
     // Obtiene el valor del parámetro de ruta llamado 'id'
     this.id = this.$route.params.id;
     // Busca el producto con el 'id' en la lista de productos
+
     this.product = this.products.find(product => product.id == this.id);
   }
 }
