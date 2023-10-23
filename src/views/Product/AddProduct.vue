@@ -33,7 +33,7 @@
             <label>Pecio</label>
             <input type="number" class="form-control" v-model="price" required>
           </div>
-          <button type="button" class="btn btn-primary" @click="addProduct">Submit</button>
+          <button type="button" class="btn btn-primary" @click="addProduct">Crear Producto</button>
         </form>
       </div>
       <div class="col-3"></div>
@@ -43,8 +43,10 @@
 
 <script>
 export default {
+  // Define el componente Vue
   data() {
     return {
+      // Inicializa variables para los datos del nuevo producto
       id: null,
       categoryId: null,
       name: null,
@@ -53,9 +55,13 @@ export default {
       price: null
     }
   },
+  // Define las propiedades esperadas que se pasan al componente
   props: ["baseURL", "products", "categories"],
   methods: {
+    // Define el método "addProduct"
     async addProduct() {
+      // Crea un objeto "newProduct" con los datos del nuevo producto
+
       const newProduct = {
         id: this.id,
         categoryId: this.categoryId,
@@ -64,6 +70,8 @@ export default {
         imageURL: this.imageURL,
         price: this.price
       }
+
+      // Realiza una solicitud POST para agregar el nuevo producto al servidor
 
       await axios({
         method: 'post',
@@ -74,9 +82,12 @@ export default {
         }
       })
         .then(res => {
-          //sending the event to parent to handle
+          // Emite un evento personalizado "fetchData" para notificar al padre
           this.$emit("fetchData");
+          // Redirige al usuario a la página 'AdminProduct'
           this.$router.push({ name: 'AdminProduct' });
+          // Muestra un mensaje de éxito utilizando SweetAlert2
+
           swal({
             text: "¡Producto agregado exitosamente!",
             icon: "success",
@@ -86,8 +97,12 @@ export default {
         .catch(err => console.log(err));
     }
   },
+  // El gancho "mounted" se ejecuta cuando el componente está montado
   mounted() {
+    // Comprueba si no hay un token de autenticación en el almacenamiento local
     if (!localStorage.getItem('token')) {
+      // Redirige al usuario a la página 'Signin'
+
       this.$router.push({ name: 'Signin' });
     }
   }

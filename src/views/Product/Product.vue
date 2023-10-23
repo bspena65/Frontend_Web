@@ -19,18 +19,28 @@
 </template>
 
 <script>
+// Importa el componente "ProductBox" desde la ruta relativa '../../components/Product/ProductBox'
 import ProductBox from '../../components/Product/ProductBox';
+
 export default {
+  // Define el nombre del componente como 'Product'
   name: 'Product',
+  // Registra el componente "ProductBox" como una dependencia de este componente
   components: { ProductBox },
+  // Define las propiedades esperadas que se pasan al componente
   props: ["baseURL", "products"],
+  // El gancho "mounted" se ejecuta cuando el componente está montado
   mounted() {
+    // Comprueba si el nombre de la ruta actual es 'AdminProduct' y si no hay un token de autenticación en el almacenamiento local
     if (this.$route.name == 'AdminProduct' && !localStorage.getItem('token')) {
+      // Redirige al usuario a la página 'Signin'
+
       this.$router.push({ name: 'Signin' });
     }
   }
 }
 </script>
+
 
 <style scoped>
 h4 {

@@ -33,7 +33,8 @@
             <label>Precio</label>
             <input type="number" class="form-control" v-model="product.price" required>
           </div>
-          <button type="button" class="btn btn-primary" @click="editProduct">Submit</button>
+          <button type="button" class="btn btn-primary" @click="editProduct">Guardar</button>
+
         </form>
       </div>
       <div class="col-3"></div>
@@ -45,17 +46,24 @@
 export default {
   data() {
     return {
+      // Inicializa el objeto "product" como nulo
       product: null
     }
   },
+  // Define las propiedades esperadas que se pasan al componente
   props: ["baseURL", "products", "categories"],
   methods: {
+    // Define el método "editProduct"
     async editProduct() {
+      // Realiza una solicitud POST para actualizar el producto en el servidor
       axios.post(this.baseURL + "product/update/" + this.id, this.product)
         .then(res => {
-          //sending the event to parent to handle
+          // Emite un evento personalizado "fetchData" para notificar al padre
           this.$emit("fetchData");
+          // Redirige al usuario a la página 'AdminProduct'
           this.$router.push({ name: 'AdminProduct' });
+          // Muestra un mensaje de éxito utilizando SweetAlert2
+
           swal({
             text: "¡Producto actualizado exitosamente!",
             icon: "success",
@@ -65,16 +73,23 @@ export default {
         .catch(err => console.log("err", err));
     }
   },
+  // El gancho "mounted" se ejecuta cuando el componente está montado
   mounted() {
+    // Comprueba si no hay un token de autenticación en el almacenamiento local
     if (!localStorage.getItem('token')) {
+      // Redirige al usuario a la página 'Signin' y termina la ejecución
       this.$router.push({ name: 'Signin' });
       return;
     }
+    // Obtiene el valor del parámetro de ruta llamado 'id'
     this.id = this.$route.params.id;
+    // Busca el producto con el 'id' en la lista de productos
+
     this.product = this.products.find(product => product.id == this.id);
   }
 }
 </script>
+
 
 <style scoped>
 h4 {
