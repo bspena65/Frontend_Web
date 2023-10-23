@@ -51,10 +51,14 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signin' }">Deseos</router-link>
             <router-link class="dropdown-item" v-else :to="{ name: 'Wishlist' }">Deseos</router-link>
-            <router-link class="dropdown-item" :to="{ name: 'Admin' }">Admin</router-link>
+            <!--<router-link class="dropdown-item" :to="{ name: 'Admin' }">Admin</router-link>-->
+
+            <!-- Condiciona el renderizado del enlace a la página de administrador -->
+            <router-link v-if="token" class="dropdown-item" :to="{ name: 'Admin' }">Admin</router-link>
+
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signin' }">Iniciar Sesion</router-link>
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signup' }">Registrase</router-link>
-            <a class="dropdown-item" v-if="token" href="#" @click="signout">Cerar Sesion</a>
+            <a class="dropdown-item" v-if="token" href="#" @click="signout">Cerrar Sesion</a>
           </div>
         </li>
 
