@@ -51,11 +51,14 @@ export default {
   props: ["baseURL", "products", "categories"],
   methods: {
     async editProduct() {
+      // Enviar una solicitud POST al servidor para actualizar el producto
       axios.post(this.baseURL + "product/update/" + this.id, this.product)
         .then(res => {
-          //sending the event to parent to handle
+          // Emitir un evento para notificar a un componente padre que se ha actualizado el producto
           this.$emit("fetchData");
+          // Redirigir al usuario a una ruta llamada 'AdminProduct'
           this.$router.push({ name: 'AdminProduct' });
+          // Mostrar una notificación de éxito utilizando la biblioteca 'swal'
           swal({
             text: "¡Producto actualizado exitosamente!",
             icon: "success",
@@ -66,15 +69,22 @@ export default {
     }
   },
   mounted() {
+    // Comprobar si no hay un token de autenticación almacenado en el localStorage
+    // y redirigir al usuario a la página de inicio de sesión ('Signin') si no hay un token
     if (!localStorage.getItem('token')) {
       this.$router.push({ name: 'Signin' });
       return;
     }
+    
+    // Obtener el ID del producto a editar desde los parámetros de la ruta
     this.id = this.$route.params.id;
+    
+    // Buscar el producto en la lista de productos basado en su ID
     this.product = this.products.find(product => product.id == this.id);
   }
 }
 </script>
+
 
 <style scoped>
 h4 {

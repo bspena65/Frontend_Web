@@ -56,6 +56,7 @@ export default {
   props: ["baseURL", "products", "categories"],
   methods: {
     async addProduct() {
+      // Crear un objeto con los datos del producto que se va a agregar
       const newProduct = {
         id: this.id,
         categoryId: this.categoryId,
@@ -65,6 +66,7 @@ export default {
         price: this.price
       }
 
+      // Enviar una solicitud POST al servidor para agregar el producto
       await axios({
         method: 'post',
         url: this.baseURL + "product/add",
@@ -74,9 +76,11 @@ export default {
         }
       })
         .then(res => {
-          //sending the event to parent to handle
+          // Emitir un evento para notificar a un componente padre que se ha agregado un producto
           this.$emit("fetchData");
+          // Redirigir a una ruta llamada 'AdminProduct' (posiblemente una página de administración)
           this.$router.push({ name: 'AdminProduct' });
+          // Mostrar una notificación de éxito utilizando la biblioteca 'swal'
           swal({
             text: "¡Producto agregado exitosamente!",
             icon: "success",
@@ -87,6 +91,8 @@ export default {
     }
   },
   mounted() {
+    // Comprobar si no hay un token de autenticación almacenado en el localStorage
+    // y redirigir al usuario a la página de inicio de sesión ('Signin') si no hay un token
     if (!localStorage.getItem('token')) {
       this.$router.push({ name: 'Signin' });
     }

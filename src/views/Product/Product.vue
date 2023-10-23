@@ -20,17 +20,21 @@
 
 <script>
 import ProductBox from '../../components/Product/ProductBox';
+
 export default {
   name: 'Product',
   components: { ProductBox },
   props: ["baseURL", "products"],
   mounted() {
+    // Verificar si el nombre de la ruta actual es 'AdminProduct' y si no hay un token de autenticación en el localStorage
     if (this.$route.name == 'AdminProduct' && !localStorage.getItem('token')) {
+      // Redirigir al usuario a la página de inicio de sesión ('Signin')
       this.$router.push({ name: 'Signin' });
     }
   }
 }
 </script>
+
 
 <style scoped>
 h4 {

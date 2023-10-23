@@ -60,18 +60,19 @@
 export default {
   data() {
     return {
-      product: {},
-      category: {},
-      id: null,
-      token: null,
-      isAddedToWishlist: false,
-      wishlistString: "Añadir a la lista de deseos",
-      quantity: 1,
+      product: {},          // Almacena los datos del producto
+      category: {},         // Almacena los datos de la categoría del producto
+      id: null,             // Almacena el ID del producto actual
+      token: null,          // Almacena el token de autenticación del usuario
+      isAddedToWishlist: false,  // Indica si el producto está en la lista de deseos
+      wishlistString: "Añadir a la lista de deseos", // Etiqueta para el botón de lista de deseos
+      quantity: 1,          // Cantidad del producto a agregar al carrito
     };
   },
   props: ["baseURL", "products", "categories"],
   methods: {
     addToWishList(productId) {
+      // Agregar el producto a la lista de deseos mediante una solicitud POST
       axios
         .post(`${this.baseURL}wishlist/add?token=${this.token}`, {
           id: productId,
@@ -89,6 +90,7 @@ export default {
         );
     },
     addToCart(productId) {
+      // Verificar si el usuario ha iniciado sesión
       if (!this.token) {
         swal({
           text: "¡Por favor ingresa primero!",
@@ -96,6 +98,7 @@ export default {
         });
         return;
       }
+      // Agregar el producto al carrito mediante una solicitud POST
       axios
         .post(`${this.baseURL}cart/add?token=${this.token}`, {
           productId: productId,
@@ -109,7 +112,7 @@ export default {
                 icon: "success",
                 closeOnClickOutside: false,
               });
-              // refresh nav bar
+              // Actualizar la barra de navegación (emitir un evento para el componente padre)
               this.$emit("fetchData");
             }
           },
@@ -118,11 +121,12 @@ export default {
           }
         );
     },
-
     listCartItems() {
+      // Obtener la lista de elementos en el carrito del usuario
       axios.get(`${this.baseURL}cart/?token=${this.token}`).then(
         (response) => {
           if (response.status === 200) {
+            // Redirigir al usuario a la página de carrito
             this.$router.push("/cart");
           }
         },
@@ -133,15 +137,20 @@ export default {
     },
   },
   mounted() {
+    // Obtener el ID del producto desde los parámetros de la ruta
     this.id = this.$route.params.id;
+    // Buscar el producto en la lista de productos basado en su ID
     this.product = this.products.find((product) => product.id == this.id);
+    // Buscar la categoría del producto en la lista de categorías
     this.category = this.categories.find(
       (category) => category.id == this.product.categoryId
     );
+    // Obtener el token de autenticación del usuario desde el localStorage
     this.token = localStorage.getItem("token");
   },
 };
 </script>
+
 
 <style>
 .category {

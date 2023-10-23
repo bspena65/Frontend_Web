@@ -18,11 +18,12 @@
 
 <script>
 import ProductBox from '../../components/Product/ProductBox';
+
 export default {
   data() {
     return {
-      products: null,
-      token: null
+      products: null,  // Almacena la lista de productos en la lista de deseos
+      token: null      // Almacena el token de autenticación del usuario
     }
   },
   name: 'Product',
@@ -30,19 +31,21 @@ export default {
   props: ["baseURL"],
   methods: {
     fetchWishlist() {
-
-      // fetch products
+      // Realiza una solicitud GET al servidor para obtener los productos en la lista de deseos
       axios.get(`${this.baseURL}wishlist/${this.token}`)
         .then(data => this.products = data.data)
         .catch(err => console.log(err));
     }
   },
   mounted() {
+    // Obtiene el token de autenticación del usuario desde el localStorage
     this.token = localStorage.getItem('token');
+    // Llama al método fetchWishlist para obtener y mostrar los productos en la lista de deseos
     this.fetchWishlist();
   }
 }
 </script>
+
 
 <style scoped>
 h4 {
