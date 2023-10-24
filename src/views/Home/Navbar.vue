@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg mynav">
     <!--Logo-->
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
-      <img id="logo" src="../assets/Logo1.1.png" />
+      <img id="logo" src="../../assets/Logo1.1.png" />
     </router-link>
 
     <!--    Burger Button-->
@@ -44,37 +44,31 @@
         </li>
 
         <li class="nav-item dropdown">
-          <!-- Este es un elemento de la lista en la barra de navegación con una clase "dropdown" -->
           <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Cuentas
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <!-- Si no hay un token (es decir, el usuario no está autenticado) -->
+            <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signin' }">Deseos</router-link>
-            
-            <!-- Muestra un enlace que lleva a la página "Signin" (inicio de sesión) -->
-            <!-- Si hay un token (el usuario está autenticado) -->
+
+            <!-- Enlace para ir a la página "Deseos" si el usuario está autenticado (token existe) -->
             <router-link class="dropdown-item" v-else :to="{ name: 'Wishlist' }">Deseos</router-link>
-            
-            <!-- Muestra un enlace que lleva a la página "Wishlist" (lista de deseos) -->
-            <!-- Si hay un token (el usuario está autenticado) -->
-            <router-link class="dropdown-item" v-if="token" :to="{ name: 'Admin' }">Admin</router-link>
-            
-            <!-- Muestra un enlace que lleva a la página "Admin" (página de administración) -->
-            <!-- Si no hay un token (es decir, el usuario no está autenticado) -->
+
+            <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
+            <router-link class="dropdown-item" v-if="token " :to="{ name: 'Admin' }">Admin</router-link>
+
+            <!-- Enlace para ir a la página "Iniciar Sesión" si el usuario no está autenticado (token no existe) -->
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signin' }">Iniciar Sesión</router-link>
-            
-            <!-- Muestra un enlace que lleva a la página "Signin" (inicio de sesión) -->
-            <!-- Si no hay un token (es decir, el usuario no está autenticado) -->
+
+            <!-- Enlace para ir a la página "Registrarse" si el usuario no está autenticado (token no existe) -->
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signup' }">Registrarse</router-link>
-            
-            <!-- Muestra un enlace que lleva a la página "Signup" (registro) -->
-            <!-- Si hay un token (el usuario está autenticado) -->
+
+            <!-- Enlace para cerrar la sesión del usuario si está autenticado (token existe) -->
             <a class="dropdown-item" v-if="token" href="#" @click="signout">Cerrar Sesión</a>
-            <!-- Muestra un enlace que ejecuta la función "signout" al hacer clic, lo que permite al usuario cerrar sesión -->
           </div>
         </li>
+
 
 
         <li class="nav-item">
@@ -91,48 +85,50 @@
     </div>
   </nav>
 </template>
+
 <script>
-// Exporta el componente Vue como el componente predeterminado de este módulo
+import swal from 'sweetalert';
 export default {
-  // Define el nombre del componente
   name: "Navbar",
-  // Declara las propiedades que este componente espera recibir
   props: ["cartCount"],
-  // Inicia la sección de datos locales del componente
   data() {
     return {
-      // Inicializa un campo de datos llamado "token" con el valor null
       token: null,
     };
   },
-  // Comienza la sección de métodos del componente
-  methods: {
-    // Define un método llamado "signout" que se ejecuta cuando el usuario cierra sesión
-    signout() {
-      // Elimina la clave "token" del almacenamiento local del navegador
-      localStorage.removeItem("token");
-      // Establece la variable de datos "token" en null
-      this.token = null;
-      // Emite un evento personalizado llamado "resetCartCount"
-      this.$emit("resetCartCount");
-      // Navega a la ruta con nombre "Home" utilizando el enrutador Vue
-      this.$router.push({ name: "Home" });
-      // Muestra un cuadro de diálogo con un mensaje de éxito
-      swal({
-        text: "Cierre de sesión exitoso",
-        icon: "success",
-        closeOnClickOutside: false,
-      });
-    },
+methods: {
+  signout() {
+    // Mostrar un cuadro de diálogo SweetAlert2 para confirmar la acción
+    swal({
+      title: "¿Estás seguro?",
+      text: "¿Deseas cerrar la sesión?",
+      icon: "warning",
+      buttons: ["Cancelar", "Aceptar"],
+    })
+    .then((userConfirmed) => {
+      if (userConfirmed) {
+        // El usuario ha confirmado, proceder con el cierre de sesión
+        localStorage.removeItem("token");
+        this.token = null;
+        this.$emit("resetCartCount");
+        this.$router.push({ name: "Home" });
+        swal({
+          text: "Cierre de sesión exitoso",
+          icon: "success",
+          closeOnClickOutside: false,
+        });
+      } else {
+        // El usuario ha cancelado la acción, No es necesario hacer nada en este caso
+      }
+    });
   },
-  // El gancho "mounted" se ejecuta cuando el componente se ha montado en el DOM
+},
   mounted() {
-    // Obtiene el valor de la clave "token" del almacenamiento local del navegador
-    // y lo asigna a la variable de datos "token" del componente
     this.token = localStorage.getItem("token");
   },
 };
 </script>
+
 
 
 <style scoped>

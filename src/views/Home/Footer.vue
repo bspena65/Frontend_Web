@@ -35,7 +35,7 @@
       <div class="row">
         <div class="col-12">
           <div class="text-center py-5">
-            <img id="logo" src="../assets/Logo1.1.png" />
+            <img id="logo" src="../../assets/Logo1.1.png" />
           </div>
         </div>
       </div>
