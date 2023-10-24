@@ -64,8 +64,6 @@ export default {
         password: this.password,
       };
 
-      
-
       await axios
         .post(`${this.baseURL}user/signIn`, user)
         .then((res) => {
