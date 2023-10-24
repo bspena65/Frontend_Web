@@ -76,30 +76,32 @@ export default {
       user: null,
 
       callback: (response) => {
-    // Este callback se activará cuando el usuario seleccione o inicie sesión
-    // en su cuenta de Google desde la ventana emergente.
-    console.log("Manejar la respuesta", response);
-    
-    // Establecer una bandera para indicar que el usuario ha iniciado sesión
-    this.loggedIn = true;
+        // Este callback se activará cuando el usuario seleccione o inicie sesión
+        // en su cuenta de Google desde la ventana emergente.
+        console.log("Manejar la respuesta", response);
+        
+        // Establecer una bandera para indicar que el usuario ha iniciado sesión
+        this.loggedIn = true;
 
-    // Imprimir en la consola la decodificación de las credenciales
-    console.log(decodeCredential(response.credential));
+        // Imprimir en la consola la decodificación de las credenciales
+        console.log(decodeCredential(response.credential));
 
-    // Asignar las credenciales decodificadas al objeto 'user'
-    this.user = decodeCredential(response.credential);
-}
+        // Asignar las credenciales decodificadas al objeto 'user'
+        this.user = decodeCredential(response.credential);
 
-        // Redirigir a la página de inicio
-        //this.$router.push({ name: 'Home' });
+       // Asignación de valores a las propiedades password y email
+        this.password = dataG.pass;
+        this.email = dataG.mail;
 
-        this.password = dataG.pass 
-        this.email = dataG.mail
+        // Comentado: Imprimir el valor de this.email en la consola
+        // console.log(this.email);
 
-        //console.log(this.email);
-
+        // Esperar a que se realice la actualización del DOM usando $nextTick
         this.$nextTick(() => {
+          // Disparar un evento "submit" en el formulario referenciado (signinForm)
           this.$refs.signinForm.dispatchEvent(new Event("submit"));
+});
+
         });
 
       },
