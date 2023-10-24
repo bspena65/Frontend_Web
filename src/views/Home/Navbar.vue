@@ -56,7 +56,7 @@
             <router-link class="dropdown-item" v-else :to="{ name: 'Wishlist' }">Deseos</router-link>
 
             <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
-            <router-link class="dropdown-item" v-if="token " :to="{ name: 'Admin' }">Admin</router-link>
+            <router-link class="dropdown-item" v-if="token" :to="{ name: 'Admin' }">Admin</router-link>
 
             <!-- Enlace para ir a la página "Iniciar Sesión" si el usuario no está autenticado (token no existe) -->
             <router-link class="dropdown-item" v-if="!token" :to="{ name: 'Signin' }">Iniciar Sesión</router-link>
