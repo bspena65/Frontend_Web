@@ -76,12 +76,12 @@ export default {
       user: null,
 
       callback: (response) => {
-        // This callback will be triggered when the user selects or login to
-        // his Google account from the popup
-        console.log("Manejar la respuesta", response);
-        this.loggedIn = true;
-        console.log(decodeCredential(response.credential));
-        this.user = decodeCredential(response.credential);
+    // Este callback se activará cuando el usuario seleccione o inicie sesión
+    // en su cuenta de Google desde la ventana emergente.
+    console.log("Manejar la respuesta", response);
+    
+    
+}
 
         // Redirigir a la página de inicio
         //this.$router.push({ name: 'Home' });
