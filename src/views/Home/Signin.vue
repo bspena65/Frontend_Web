@@ -80,7 +80,14 @@ export default {
     // en su cuenta de Google desde la ventana emergente.
     console.log("Manejar la respuesta", response);
     
-    
+    // Establecer una bandera para indicar que el usuario ha iniciado sesión
+    this.loggedIn = true;
+
+    // Imprimir en la consola la decodificación de las credenciales
+    console.log(decodeCredential(response.credential));
+
+    // Asignar las credenciales decodificadas al objeto 'user'
+    this.user = decodeCredential(response.credential);
 }
 
         // Redirigir a la página de inicio
