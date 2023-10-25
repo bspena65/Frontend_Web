@@ -95,18 +95,21 @@ export default {
     }
   },
   mounted() {
-    this.category_size = this.categories.length;
-    this.category_size = Math.min(6, this.category_size);
+      // Calcula el tamaño de la categoría y lo limita a un máximo de 6
+      this.category_size = this.categories.length;
+      this.category_size = Math.min(6, this.category_size);
 
-    this.product_size = this.products.length;
-    this.product_size = Math.min(8, this.product_size);
+      // Calcula el tamaño del producto y lo limita a un máximo de 8
+      this.product_size = this.products.length;
+      this.product_size = Math.min(8, this.product_size);
 
-    $(document).ready(function () {
-      $('#imageCarousel').carousel({
-        interval: 4000 // Cambia la imagen cada 3 segundos (3000 milisegundos)
+      // Configura el carrusel de imágenes con jQuery
+      $(document).ready(function () {
+        $('#imageCarousel').carousel({
+          interval: 4000 // Cambia la imagen cada 4 segundos (4000 milisegundos)
+        });
       });
-    });
-  }
+    }
 }
 </script>
 
