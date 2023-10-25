@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import swal from 'sweetalert';
+
 export default {
   name: "Navbar",
   props: ["cartCount"],
@@ -116,6 +116,8 @@ methods: {
           text: "Cierre de sesión exitoso",
           icon: "success",
           closeOnClickOutside: false,
+          timer: 1000, // 3000 milisegundos = 3 segundos
+          buttons: false, // Esto quita el botón "OK"
         });
       } else {
         // El usuario ha cancelado la acción, No es necesario hacer nada en este caso
