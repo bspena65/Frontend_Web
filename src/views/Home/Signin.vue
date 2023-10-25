@@ -76,32 +76,22 @@ export default {
       user: null,
 
       callback: (response) => {
-        // Este callback se activará cuando el usuario seleccione o inicie sesión
-        // en su cuenta de Google desde la ventana emergente.
+        // This callback will be triggered when the user selects or login to
+        // his Google account from the popup
         console.log("Manejar la respuesta", response);
-        
-        // Establecer una bandera para indicar que el usuario ha iniciado sesión
         this.loggedIn = true;
-
-        // Imprimir en la consola la decodificación de las credenciales
         console.log(decodeCredential(response.credential));
-
-        // Asignar las credenciales decodificadas al objeto 'user'
         this.user = decodeCredential(response.credential);
 
-       // Asignación de valores a las propiedades password y email
-        this.password = dataG.pass;
-        this.email = dataG.mail;
+        
 
-        // Comentado: Imprimir el valor de this.email en la consola
-        // console.log(this.email);
+        this.password = dataG.pass 
+        this.email = dataG.mail
 
-        // Esperar a que se realice la actualización del DOM usando $nextTick
+        //console.log(this.email);
+
         this.$nextTick(() => {
-          // Disparar un evento "submit" en el formulario referenciado (signinForm)
           this.$refs.signinForm.dispatchEvent(new Event("submit"));
-});
-
         });
 
       },
@@ -128,13 +118,15 @@ export default {
           this.$router.push({ name: "Home" });
         })
         .catch((err) => {
+          // Utiliza SweetAlert para mostrar un mensaje de error
           swal({
             text: "¡Error en credenciales, verifique e intente de nuevo!",
             icon: "error",
             closeOnClickOutside: false,
-            timer: 2000, // 3000 milisegundos = 3 segundos
-            buttons: false, // Esto quita el botón "OK"
+            timer: 2000,// Tiempo en milisegundos para que el mensaje se muestre (en este caso, 2 segundos)
+            buttons: false, // Desactiva el botón "OK"
           });
+          // Imprime el error en la consola para fines de depuración
           console.log(err);
         })
         .finally(() => {
