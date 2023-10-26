@@ -46,28 +46,19 @@
 
           <li class="nav-item">
 
+            <!-- Enlace de navegación a la ruta con nombre 'Home' -->
             <router-link class="nav-link text-light" :to="{ name: 'Home' }">{{ $t('message.options.start') }}</router-link>
-            <router-link class="nav-link text-light" :to="{ name: 'Product' }">{{ $t('message.options.product') }}
-            </router-link>
+
+            <!-- Enlace de navegación a la ruta con nombre 'Product' -->
+            <router-link class="nav-link text-light" :to="{ name: 'Product' }">{{ $t('message.options.product') }}</router-link>
+
+            <!-- Enlace de navegación a la ruta con nombre 'Category' -->
             <router-link class="nav-link text-light" :to="{ name: 'Category' }">{{ $t('message.options.category') }}</router-link>
+
             <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->
             <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.wishes') }}</router-link>
 
-            <!-- Enlace para ir a la página "Deseos" si el usuario está autenticado (token existe) -->
-            <router-link class="nav-link text-light" v-else :to="{ name: 'Wishlist' }">{{ $t('message.options.wishes') }}</router-link>
-
-            <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
-            <router-link class="nav-link text-light" v-if="token" :to="{ name: 'Admin' }">{{ $t('message.options.admin') }}</router-link>
-
-            <!-- Enlace para ir a la página "Iniciar Sesión" si el usuario no está autenticado (token no existe) -->
-            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.signin') }}</router-link>
-
-            <!-- Enlace para ir a la página "Registrarse" si el usuario no está autenticado (token no existe) -->
-            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signup' }">{{ $t('message.options.signup') }}</router-link>
-
-            <!-- Enlace para cerrar la sesión del usuario si está autenticado (token existe) -->
-            <a class="nav-link text-light" v-if="token" href="#" @click="signout">{{ $t('message.options.signoff') }}</a>
-            <router-link class="nav-link text-light" :to="{ name: 'Order' }">{{ $t('message.options.orders') }}</router-link>
+            
           </li>
 
           <li class="nav-item">
