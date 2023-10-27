@@ -58,7 +58,11 @@
             <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->
             <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.wishes') }}</router-link>
 
-            
+            <!-- Enlace para ir a la página "Deseos" si el usuario está autenticado (token existe) -->
+            <router-link class="nav-link text-light" v-else :to="{ name: 'Wishlist' }">{{ $t('message.options.wishes') }}</router-link>
+
+            <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
+            <router-link class="nav-link text-light" v-if="token" :to="{ name: 'Admin' }">{{ $t('message.options.admin') }}</router-link>
           </li>
 
           <li class="nav-item">
