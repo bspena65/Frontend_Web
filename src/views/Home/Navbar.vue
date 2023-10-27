@@ -63,6 +63,12 @@
 
             <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
             <router-link class="nav-link text-light" v-if="token" :to="{ name: 'Admin' }">{{ $t('message.options.admin') }}</router-link>
+
+            <!-- Enlace para ir a la página "Iniciar Sesión" si el usuario no está autenticado (token no existe) -->
+            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.signin') }}</router-link>
+
+            <!-- Enlace para ir a la página "Registrarse" si el usuario no está autenticado (token no existe) -->
+            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signup' }">{{ $t('message.options.signup') }}</router-link>
           </li>
 
           <li class="nav-item">
