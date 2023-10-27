@@ -69,6 +69,10 @@
 
             <!-- Enlace para ir a la página "Registrarse" si el usuario no está autenticado (token no existe) -->
             <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signup' }">{{ $t('message.options.signup') }}</router-link>
+
+            <!-- Enlace para cerrar la sesión del usuario si está autenticado (token existe) -->
+            <a class="nav-link text-light" v-if="token" href="#" @click="signout">{{ $t('message.options.signoff') }}</a>
+            <router-link class="nav-link text-light" :to="{ name: 'Order' }">{{ $t('message.options.orders') }}</router-link>
           </li>
 
           <li class="nav-item">
