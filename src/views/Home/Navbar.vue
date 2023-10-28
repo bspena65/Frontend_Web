@@ -127,6 +127,15 @@ export default {
       // Navegar a la ruta 'Home' utilizando el router de Vue.js
       this.$router.push({ name: "Home" });
 
+      // Mostrar un mensaje de éxito con SweetAlert2
+      swal({
+        text: "Cierre de sesión exitoso",
+        icon: "success",
+        closeOnClickOutside: false,
+        timer: 1000, // 1000 milisegundos = 1 segundo
+        buttons: false, // Esto quita el botón "OK"
+      });
+
     } else {
       // El usuario ha cancelado la acción, No es necesario hacer nada en este caso
     }
