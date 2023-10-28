@@ -124,6 +124,9 @@ export default {
       // Emitir un evento para restablecer el contador del carrito (si está implementado)
       this.$emit("resetCartCount");
 
+      // Navegar a la ruta 'Home' utilizando el router de Vue.js
+      this.$router.push({ name: "Home" });
+
     } else {
       // El usuario ha cancelado la acción, No es necesario hacer nada en este caso
     }
