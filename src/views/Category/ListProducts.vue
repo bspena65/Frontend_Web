@@ -38,6 +38,20 @@ export default {
   components: { ProductBox },
   props: ["baseURL", "categories"],
   
+  mounted() {
+    // Obtener el ID de la categoría desde los parámetros de la ruta
+    this.id = this.$route.params.id;
+
+    // Encontrar el índice de la categoría en el array de categorías
+    this.categoryIndex = this.categories.findIndex(category => category.id == this.id);
+
+    // Obtener la categoría actual
+    this.category = this.categories[this.categoryIndex];
+
+    // Calcular la longitud de los productos en la categoría
+    this.len = this.category.products.length;
+  }
+
 }
 </script>
 
