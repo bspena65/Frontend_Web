@@ -9,4 +9,15 @@
     </div>
 </template>
 
+<script>
+export default {
+    name: 'FailedPayment',
+    mounted() {
+        // Elimina el identificador de sesión almacenado en el localStorage
+        localStorage.removeItem("sessionId");
 
+        // Redirige a la ruta '/order'
+        window.location.href = '/order';
+    }
+}
+</script>
