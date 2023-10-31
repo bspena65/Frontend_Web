@@ -68,6 +68,8 @@ export default {
             text: "¡Producto actualizado exitosamente!",
             icon: "success",
             closeOnClickOutside: false,
+            timer: 1000, // 3000 milisegundos = 3 segundos
+            buttons: false, // Esto quita el botón "OK"
           });
         })
         .catch(err => console.log("err", err));

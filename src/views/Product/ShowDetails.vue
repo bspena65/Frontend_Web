@@ -102,6 +102,8 @@ export default {
         swal({
           text: "¡Por favor ingresa primero!",
           icon: "error",
+          timer: 1000, // 3000 milisegundos = 3 segundos
+          buttons: false, // Esto quita el botón "OK"
         });
         return;
       }
@@ -119,6 +121,8 @@ export default {
                 text: "Producto añadido al carrito!",
                 icon: "success",
                 closeOnClickOutside: false,
+                timer: 1000, // 3000 milisegundos = 3 segundos
+                buttons: false, // Esto quita el botón "OK"
               });
               // Actualiza la barra de navegación llamando al evento personalizado "fetchData"
 
