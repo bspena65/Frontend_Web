@@ -76,6 +76,8 @@ export default {
             text: "¡Error en credenciales, verifique e intente de nuevo!",
             icon: "error",
             closeOnClickOutside: false,
+            timer: 2000, // 3000 milisegundos = 3 segundos
+            buttons: false, // Esto quita el botón "OK"
           });
           console.log(err);
         })

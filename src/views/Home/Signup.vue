@@ -82,27 +82,28 @@ export default {
           password: this.password,
         };
 
-        // call the API
         await axios
           .post(`${this.baseURL}user/signup`, user)
           .then(() => {
-            // redirect to home page
             this.$router.replace("/");
             swal({
               text: "Registro de usuario exitoso. Por favor Iniciar sesión",
               icon: "success",
               closeOnClickOutside: false,
+              timer: 2000, // 3000 milisegundos = 3 segundos
+              buttons: false, // Esto quita el botón "OK"
             });
           })
           .catch((err) => {
             console.log(err);
           });
       } else {
-        // passwords are not matching
         swal({
           text: "¡Error! Las contraseñas no coinciden",
           icon: "error",
           closeOnClickOutside: false,
+          timer: 2000, // 3000 milisegundos = 3 segundos
+          buttons: false, // Esto quita el botón "OK"
         });
       }
     },
