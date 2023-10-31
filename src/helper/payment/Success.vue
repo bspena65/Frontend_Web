@@ -33,9 +33,13 @@ export default {
           // Redirigir a la ruta '/order' en caso de éxito
           window.location.href = '/order';
         } else {
-         
+          // Manejar otros códigos de estado
+          console.error('Error al realizar el pedido:', response.status, response.statusText);
         }
-      } 
+      } catch (error) {
+        // Manejar errores de la solicitud
+        console.error('Error en la petición:', error);
+      }
     }
   },
 }
