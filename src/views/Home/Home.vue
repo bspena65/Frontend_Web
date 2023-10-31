@@ -36,10 +36,10 @@
           <img class="carousel-image" src="../../assets/Home-Slider-3.png" alt="Imagen 3">
         </div>
         <div class="carousel-item">
-          <img class="carousel-image" src="../../assets/Home-Slider-2.png" alt="Imagen 3">
+          <img class="carousel-image" src="../../assets/Home-Slider-2.png" alt="Imagen 4">
         </div>
         <div class="carousel-item">
-          <img class="carousel-image" src="../../assets/Home-Slider-4.png" alt="Imagen 3">
+          <img class="carousel-image" src="../../assets/Home-Slider-4.png" alt="Imagen 5">
         </div>
       </div>
 
@@ -100,8 +100,10 @@ export default {
     this.product_size = Math.min(8, this.product_size);
 
     $(document).ready(function () {
+      // Selecciona todas las imágenes del carrusel y establece la misma duración de transición
+      $('#imageCarousel .carousel-item').css('transition', '2s');
       $('#imageCarousel').carousel({
-        interval: 2200 // Cambia la imagen cada 3 segundos (3000 milisegundos)
+        interval: 5000 // Cambia la imagen cada 5 segundos (5000 milisegundos)
       });
     });
   }
