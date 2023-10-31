@@ -155,7 +155,7 @@ export default {
 }
 
 .enlace {
-  margin-top: 15px;  /* Espaciado entre el logo y los enlaces */
+  margin-top: 20px;  /* Espaciado entre el logo y los enlaces */
 }
 
 .nav-link {
@@ -172,6 +172,7 @@ export default {
   border-bottom-right-radius: 2px;
 }
 
+
 #nav-cart-count {
   background-color: rgb(67, 102, 197);
   color: white;
@@ -179,10 +180,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
+  width: 20px; /* Aumenta el ancho para acomodar el contenido */
+  height: 22px; /* Aumenta el alto para acomodar el contenido */
   font-size: 20px;
-  margin-left: 50px;
+  position: absolute;
+  top: -5px; /* Ajusta la posición vertical */
+  right: -5px; /* Ajusta la posición horizontal */
 }
 
 #cart {
@@ -192,10 +195,11 @@ export default {
 }
 
 #cart i {
-  font-size: 36px;
-  /* Restaura el estilo del icono del carrito */
-  color: white;
-  /* Cambia el color del icono del carrito si es necesario */
+  font-size: 36px;  /* Restaura el estilo del icono del carrito */
+  color: white;  /* Cambia el color del icono del carrito si es necesario */
+
 }
+
+
 </style>
 

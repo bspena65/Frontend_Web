@@ -1,16 +1,35 @@
 <template>
   <div id="home">
     <!-- Page Wrapper -->
-    <div id="background-div" class="page-holder bg-cover">
 
-      <div class="container py-5">
-        <header class="text-left text-white py-5">
-          <h3 class="mb-4 rounded"><a href="#start-shopping" class="bg-white px-2 py-2 rounded" id="heading">Empieza a
-              comprar</a></h3>
-          <p id="content" class="lead mb-0 bg-dark p-1 rounded">Ecommerce</p>
-        </header>
+      <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#imageCarousel" data-slide-to="1"></li>
+          <li data-target="#imageCarousel" data-slide-to="2"></li>
+          <li data-target="#imageCarousel" data-slide-to="3"></li>
+          <li data-target="#imageCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="carousel-image" src="../../assets/HomeEcommerce.png" alt="Imagen 1" >
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-image" src="../../assets/HomeEcommerce.png" alt="Imagen 2">
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-image" src="../../assets/HomeEcommerce.png" alt="Imagen 3" >
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-image" src="../../assets/HomeEcommerce.png" alt="Imagen 3">
+          </div>
+          <div class="carousel-item">
+            <img class="carousel-image" src="../../assets/HomeEcommerce.png" alt="Imagen 3" >
+          </div>
+        </div>
       </div>
-    </div>
+
 
     <div id="start-shopping" class="container">
       <div class="row">
@@ -64,6 +83,12 @@ export default {
 
     this.product_size = this.products.length;
     this.product_size = Math.min(8, this.product_size);
+
+    $(document).ready(function () {
+      $('#imageCarousel').carousel({
+        interval: 2000 // Cambia la imagen cada 3 segundos (3000 milisegundos)
+      });
+    });
   }
 }
 </script>
@@ -73,14 +98,11 @@ export default {
   min-height: 100vh;
 }
 
-.bg-cover {
-  background-size: auto !important;
-
+.carousel-image {
+  width: 100%; /* Ancho deseado, puedes usar porcentaje o píxeles */
+  height: 450px; /* El valor "auto" mantiene la proporción de aspecto */
 }
 
-#background-div {
-  background: url(../../assets/HomeEcommerce.png)
-}
 
 #heading {
   text-decoration: none;
@@ -97,4 +119,5 @@ export default {
 h2 {
   font-family: 'Josefin Sans', sans-serif;
 }
+
 </style>
