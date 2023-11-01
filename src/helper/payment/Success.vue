@@ -42,5 +42,13 @@ export default {
       }
     }
   },
+  mounted() {
+    // Obtener el token y el sessionId almacenados en el localStorage
+    this.token = localStorage.getItem("token");
+    this.sessionId = localStorage.getItem("sessionId");
+
+    // Llamar al método saveOrder() cuando el componente se ha montado
+    this.saveOrder();
+  }
 }
 </script>
