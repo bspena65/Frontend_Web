@@ -19,19 +19,3 @@ export default {
 }
 </script>
 
-<style >
-.adminPanel {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 110px;
-
-}
-
-.adminPanel button {
-  font-size: 30px;
-  width: fit-content;
-  border-radius: 10px;
-  margin: 30px 30px;
-}
-</style>
