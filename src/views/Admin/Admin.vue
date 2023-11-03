@@ -12,3 +12,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    // Redirigir a la página de inicio de sesión si no hay un token almacenado en el localStorage
+    if (!localStorage.getItem('token')) {
+      this.$router.push({ name: 'Signin' });
+    }
+  }
+}
+</script>
+
