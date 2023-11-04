@@ -5,7 +5,7 @@
         <h3 class="pt-3">Carrito de compras</h3>
       </div>
     </div>
-    <!--    loop over all the cart items and display one by one-->
+    <!-- bucle sobre todos los artículos del carrito y mostrar uno por uno-->
     <div v-for="cartItem in cartItems" :key="cartItem.product.id" class="row mt-2 pt-3 justify-content-around">
       <div class="col-2"></div>
       <!-- display image -->
