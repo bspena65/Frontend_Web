@@ -8,13 +8,13 @@
     <!-- bucle sobre todos los artículos del carrito y mostrar uno por uno-->
     <div v-for="cartItem in cartItems" :key="cartItem.product.id" class="row mt-2 pt-3 justify-content-around">
       <div class="col-2"></div>
-      <!-- display image -->
+      <!-- mostrar imagen -->
       <div class="col-md-3 embed-responsive embed-responsive-16by9">
         <router-link :to="{ name: 'ShowDetails', params: { id: cartItem.product.id } }">
           <img v-bind:src="cartItem.product.imageURL" class="w-100 card-img-top embed-responsive-item" />
         </router-link>
       </div>
-      <!-- display product name, quantity and price -->
+      <!-- mostrar nombre del producto, cantidad y precio -->
       <div class="col-md-5 px-3">
         <div class="card-block px-3">
           <h6 class="card-title">
