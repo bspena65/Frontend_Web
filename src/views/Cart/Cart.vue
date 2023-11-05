@@ -17,17 +17,25 @@
       <!-- mostrar nombre del producto, cantidad y precio -->
       <div class="col-md-5 px-3">
         <div class="card-block px-3">
+          <!-- Título del producto como enlace de router -->
           <h6 class="card-title">
-            <router-link :to="{ name: 'ShowDetails', params: { id: cartItem.product.id } }">{{ cartItem.product.name }}
+            <router-link :to="{ name: 'ShowDetails', params: { id: cartItem.product.id } }">
+              {{ cartItem.product.name }}
             </router-link>
           </h6>
+
+          <!-- Precio del producto por unidad -->
           <p id="item-price" class="mb-0 font-weight-bold">
             $ {{ cartItem.product.price }} per unit
           </p>
+
+          <!-- Cantidad de productos con entrada de usuario -->
           <p id="item-quantity" class="mb-0">
             Cantidad :
+            <!-- Entrada de usuario vinculada al modelo de datos 'cartItem.quantity' -->
             <input size="1" class="p-0 h-25 border-bottom border-top-0 border-left-0 border-right-0"
               v-model="cartItem.quantity" @change="validateQuantity(cartItem)" />
+
 
           </p>
           <p id="item-total-price" class="mb-0">
