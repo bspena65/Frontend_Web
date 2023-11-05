@@ -65,81 +65,41 @@
 <script>
 const axios = require('axios');
 export default {
+  // Datos del componente
   data() {
     return {
-      cartItems: [],
-      token: null,
-      totalcost: 0,
+      cartItems: [],  // Array para almacenar los elementos del carrito
+      token: null,     // Token para la autenticación del usuario
+      totalcost: 0,    // Variable para almacenar el costo total del carrito
     };
   },
+  // Nombre del componente
   name: 'Cart',
+  // Propiedad que se espera recibir desde el componente padre
   props: ['baseURL'],
+
+  // Métodos del componente
   methods: {
+    // Método para determinar si el botón debe estar deshabilitado
     isDisabled() {
+      // Si la longitud del array de cartItems es igual a cero, el botón está deshabilitado
       if (this.cartItems.length === 0) {
         return true;
       }
+      // Si hay elementos en el carrito, el botón está habilitado
       return false;
     },
-    // fetch all the items in cart
-    listCartItems() {
-      axios.get(`${this.baseURL}cart/?token=${this.token}`).then(
-        (response) => {
-          if (response.status == 200) {
-            const result = response.data;
-            // store cartitems and total price in two variables
-            this.cartItems = result.cartItems;
-            this.totalcost = result.totalCost;
-          }
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    },
-    // go to checkout page
-    checkout() {
-      this.$router.push({ name: 'Checkout' });
-    },
-    deleteItem(itemId) {
-      axios.delete(`${this.baseURL}cart/delete/${itemId}?token=${this.token}`)
-        .then(response => {
-          // Manejo de la respuesta exitosa
-          if (response.status == 200) {
-            this.$router.go(0); // Recargar la página o actualizar la lista de elementos del carrito
-          }
-          this.$emit('fetchData');
-        })
-        .catch(error => {
-          // Manejo del error
-          console.log(error);
-        });
-    },
 
 
-    showDetails(productId) {
-      this.$router.push({
-        name: 'ShowDetails',
-        params: { id: productId },
-      });
-    },
 
-    validateQuantity(cartItem) {
-      if (cartItem.quantity < 1) {
-        swal("La cantidad mínima es 1.", { icon: "warning" });
-        cartItem.quantity = 1;
-      } else if (cartItem.quantity > cartItem.product.quantity) {
-        swal("La cantidad excede la cantidad disponible.", { icon: "warning" });
-        cartItem.quantity = cartItem.product.quantity;
-      }
-    },
-  },
+  // Método que se ejecuta después de que el componente se ha montado en el DOM
   mounted() {
-    this.token = localStorage.getItem('token');
-    this.listCartItems();
+    this.token = localStorage.getItem('token'); // Obtener el token del localStorage
+    this.listCartItems(); // Obtener y mostrar los elementos del carrito
   },
 };
 </script>
+
 
 <style scoped>
 h4,
