@@ -117,7 +117,18 @@ export default {
       });
     },
 
-  
+    // Método para validar la cantidad de un elemento en el carrito
+    validateQuantity(cartItem) {
+      if (cartItem.quantity < 1) {
+        swal("La cantidad mínima es 1.", { icon: "warning" });
+        cartItem.quantity = 1;
+      } else if (cartItem.quantity > cartItem.product.quantity) {
+        swal("La cantidad excede la cantidad disponible.", { icon: "warning" });
+        cartItem.quantity = cartItem.product.quantity;
+      }
+    },
+  },
+
   // Método que se ejecuta después de que el componente se ha montado en el DOM
   mounted() {
     this.token = localStorage.getItem('token'); // Obtener el token del localStorage
