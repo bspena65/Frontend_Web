@@ -107,7 +107,17 @@ export default {
       );
     },
 
+   
 
+    // Método para mostrar detalles de un producto por su ID
+    showDetails(productId) {
+      this.$router.push({
+        name: 'ShowDetails',
+        params: { id: productId },
+      });
+    },
+
+  
   // Método que se ejecuta después de que el componente se ha montado en el DOM
   mounted() {
     this.token = localStorage.getItem('token'); // Obtener el token del localStorage
