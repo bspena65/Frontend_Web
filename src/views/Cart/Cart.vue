@@ -90,6 +90,22 @@ export default {
       return false;
     },
 
+    // Método para obtener todos los elementos en el carrito
+    listCartItems() {
+      axios.get(`${this.baseURL}cart/?token=${this.token}`).then(
+        (response) => {
+          if (response.status == 200) {
+            const result = response.data;
+            // Almacena cartItems y el costo total en dos variables
+            this.cartItems = result.cartItems;
+            this.totalcost = result.totalCost;
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
 
 
   // Método que se ejecuta después de que el componente se ha montado en el DOM
