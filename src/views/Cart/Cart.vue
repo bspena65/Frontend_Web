@@ -107,7 +107,21 @@ export default {
       );
     },
 
-   
+    // Método para eliminar un elemento del carrito por su ID
+    deleteItem(itemId) {
+      axios.delete(`${this.baseURL}cart/delete/${itemId}?token=${this.token}`)
+        .then(response => {
+          // Manejo de la respuesta exitosa
+          if (response.status == 200) {
+            this.$router.go(0); // Recargar la página o actualizar la lista de elementos del carrito
+          }
+          this.$emit('fetchData'); // Emitir evento para notificar al componente padre que debe actualizar datos
+        })
+        .catch(error => {
+          // Manejo del error
+          console.log(error);
+        });
+    },
 
     // Método para mostrar detalles de un producto por su ID
     showDetails(productId) {
