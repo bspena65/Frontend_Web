@@ -107,6 +107,11 @@ export default {
       );
     },
 
+    // Método para ir a la página de pago (checkout)
+    checkout() {
+      this.$router.push({ name: 'Checkout' });
+    },
+
     // Método para eliminar un elemento del carrito por su ID
     deleteItem(itemId) {
       axios.delete(`${this.baseURL}cart/delete/${itemId}?token=${this.token}`)
