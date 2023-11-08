@@ -158,16 +158,20 @@ export default {
 
 
 <style scoped>
-
+h4,
 h5 {
   font-family: 'Roboto', sans-serif;
   color: #484848;
-
+  font-weight: 700;
+}
 
 .embed-responsive .card-img-top {
   object-fit: cover;
 }
 
+#item-price {
+  color: #232f3e;
+}
 
 #item-quantity {
   float: left;
@@ -177,4 +181,8 @@ h5 {
   float: right;
 }
 
+.confirm {
+  font-weight: bold;
+  font-size: larger;
+}
 </style>
