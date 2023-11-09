@@ -19,6 +19,7 @@ const messages = {
   es
 };
 
+// Crea la instancia i18n
 const i18n = createI18n({
   legacy: false, // debes usar `legacy: false` para vue-i18n versión 9+
   locale: 'es', // establece el idioma por defecto
@@ -26,6 +27,13 @@ const i18n = createI18n({
   messages, // establece los mensajes de traducción
 });
 
+const app = createApp(App);
+app.use(router);
+app.use(i18n); // Usa vue-i18n
+
+app.use(vue3GoogleLogin, {
+  clientId: '344478746020-qs8c5d77nlcre272g2had4m5v6pjej41.apps.googleusercontent.com'
+})
 
 app.mount('#app');
 
