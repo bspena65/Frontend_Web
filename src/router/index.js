@@ -32,12 +32,6 @@ const routes = [
     name: 'Home',
     component: Home
   },
-  //Admin routes
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin
-  },
 
   //Product routes
   {
@@ -90,12 +84,6 @@ const routes = [
     path: '/category/show/:id',
     name: 'ListProducts',
     component: ListProducts
-  },
-  //Page Not found
-  {
-    path: '/:catchAll(.*)',
-    name: 'PageNotFound',
-    component: PageNotFound
   },
   //Signin and Signup
   {
