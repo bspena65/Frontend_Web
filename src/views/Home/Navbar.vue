@@ -37,16 +37,20 @@
             </div>
           </form>
         </div>
+        <LanguageSwitcher></LanguageSwitcher>
+
       </div>
 
       <div class="enlace">
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
+
             <router-link class="nav-link text-light" :to="{ name: 'Home' }">Inicio</router-link>
-            <router-link class="nav-link text-light" :to="{ name: 'Home' }">Inicio</router-link>
-            <router-link class="nav-link text-light" :to="{ name: 'Product' }">Producto</router-link>
-            <router-link class="nav-link text-light" :to="{ name: 'Category' }">Categoria</router-link>
+            <router-link class="nav-link text-light" :to="{ name: 'Product' }">
+              {{ $t('message.options.product') }}
+            </router-link>
+            <router-link class="nav-link text-light" :to="{ name: 'Category' }">{{ $t('message.options.category') }}</router-link>
             <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->
             <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">Deseos</router-link>
 
@@ -82,10 +86,13 @@
 </template>
 
 <script>
-
+import LanguageSwitcher from '../Home/LanguageSwitcher.vue'
 export default {
   name: "Navbar",
   props: ["cartCount"],
+  components:{
+  LanguageSwitcher
+  },
   data() {
     return {
       token: null,

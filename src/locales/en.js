@@ -1,7 +1,11 @@
 export default {
     message: {
-      hello: 'Hello world!'
-      // ... más cadenas de texto en inglés
+      hello: 'Hello world!',
+      options: {
+        product:"Product",
+        category:"Category"    
+        }
+      
     }
   }
   
