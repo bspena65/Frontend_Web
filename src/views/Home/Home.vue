@@ -100,10 +100,8 @@ export default {
     this.product_size = Math.min(8, this.product_size);
 
     $(document).ready(function () {
-      // Selecciona todas las imágenes del carrusel y establece la misma duración de transición
-      $('#imageCarousel .carousel-item').css('transition', '2s');
       $('#imageCarousel').carousel({
-        interval: 5000 // Cambia la imagen cada 5 segundos (5000 milisegundos)
+        interval: 4000 // Cambia la imagen cada 3 segundos (3000 milisegundos)
       });
     });
   }
@@ -115,11 +113,10 @@ export default {
   min-height: 100vh;
 }
 
+
 .carousel-image {
-  width: 100%;
-  /* Ancho deseado, puedes usar porcentaje o píxeles */
-  height: 480px;
-  /* El valor "auto" mantiene la proporción de aspecto */
+  width: 100%;/* Ancho deseado, puedes usar porcentaje o píxeles */
+  height: 480px;/* El valor "auto" mantiene la proporción de aspecto */
 }
 
 
@@ -137,5 +134,11 @@ export default {
 
 h2 {
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+
+.pt-3{
+  text-align: center;
+
 }
 </style>

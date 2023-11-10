@@ -44,6 +44,7 @@
 
           <li class="nav-item">
             <router-link class="nav-link text-light" :to="{ name: 'Home' }">Inicio</router-link>
+            <router-link class="nav-link text-light" :to="{ name: 'Home' }">Inicio</router-link>
             <router-link class="nav-link text-light" :to="{ name: 'Product' }">Producto</router-link>
             <router-link class="nav-link text-light" :to="{ name: 'Category' }">Categoria</router-link>
             <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->

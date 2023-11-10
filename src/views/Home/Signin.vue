@@ -68,6 +68,8 @@ export default {
         .post(`${this.baseURL}user/signIn`, user)
         .then((res) => {
           localStorage.setItem("token", res.data.token);
+          document.cookie = "token=" + res.data.token;
+
           this.$emit("fetchData");
           this.$router.push({ name: "Home" });
         })
