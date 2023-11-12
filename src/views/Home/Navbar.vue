@@ -37,7 +37,7 @@
             </div>
           </form>
         </div>
-        <LanguageSwitcher></LanguageSwitcher>
+        <LanguageSwitcher class="lenguaje"> </LanguageSwitcher>
 
       </div>
 
@@ -144,6 +144,16 @@ export default {
   align-items: center;  /* Centra los elementos verticalmente */
 }
 
+.search{
+  display: flex;
+  flex-direction: row;  /* Cambia la dirección a columna */
+  justify-content: space-evenly;
+  align-items: center;  /* Centra los elementos verticalmente */
+}
+
+.lenguaje{
+  margin-left: 30px;
+}
 
 #logo {
   width: 200px;
