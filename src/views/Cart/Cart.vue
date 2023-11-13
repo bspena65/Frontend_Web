@@ -25,16 +25,16 @@
             $ {{ cartItem.product.price }} per unit
           </p>
           <p id="item-quantity" class="mb-0">
-            Quantity :
+            Cantidad :
             <input size="1" class="p-0 h-25 border-bottom border-top-0 border-left-0 border-right-0"
               v-model="cartItem.quantity" />
           </p>
           <p id="item-total-price" class="mb-0">
-            Total Price:
+            Precio Total:
             <span class="font-weight-bold">
               $ {{ cartItem.product.price * cartItem.quantity }}</span>
           </p>
-          <br /><a href="#" class="text-right" @click="deleteItem(cartItem.id)">Remove From Cart</a>
+          <br /><a href="#" class="text-right" @click="deleteItem(cartItem.id)">Eliminar del carrito</a>
         </div>
       </div>
       <div class="col-2"></div>
@@ -47,7 +47,7 @@
     <div class="total-cost pt-2 text-right">
       <h5>Total : $ {{ totalcost.toFixed(2) }}</h5>
       <button :disabled="isDisabled()" type="button" class="btn btn-primary confirm" @click="checkout">
-        Confirm Order
+        Confirmar Orden
       </button>
     </div>
   </div>
@@ -93,20 +93,21 @@ export default {
       this.$router.push({ name: 'Checkout' });
     },
     deleteItem(itemId) {
-      axios
-        .delete(`${this.baseURL}cart/delete/${itemId}/?token=${this.token} `)
-        .then(
-          (response) => {
-            if (response.status == 200) {
-              this.$router.go(0);
-            }
-            this.$emit('fetchData');
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    },
+  axios.delete(`${this.baseURL}cart/delete/${itemId}?token=${this.token}`)
+    .then(response => {
+      // Manejo de la respuesta exitosa
+      if (response.status == 200) {
+        this.$router.go(0); // Recargar la página o actualizar la lista de elementos del carrito
+      }
+      this.$emit('fetchData');
+    })
+    .catch(error => {
+      // Manejo del error
+      console.log(error);
+    });
+},
+
+
     showDetails(productId) {
       this.$router.push({
         name: 'ShowDetails',
