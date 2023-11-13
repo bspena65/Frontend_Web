@@ -20,7 +20,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Cantidad</span>
             </div>
-            <input class="form-control" type="number" v-bind:value="quantity" />
+            <input class="form-control" type="number" v-model="quantity" />
             
           </div>
 
@@ -97,8 +97,40 @@ export default {
           }
         );
     },
+
+      // Método para validar la cantidad ingresada
+  validateQuantitymax() {
+    if (this.quantity > this.product.quantity) {
+      swal({
+        text: "La cantidad ingresada excede la cantidad disponible.",
+        icon: "warning",
+        timer: 1000, // 3000 milisegundos = 3 segundos
+        buttons: false, // Esto quita el botón "OK"
+      });
+      return false;
+    }
+    return true;
+  },
+
+        // Método para validar la cantidad ingresada
+    validateQuantitymin() {
+    if (this.quantity < 1) {
+      swal({
+        text: "La cantidad minima es 1.",
+        icon: "warning",
+        timer: 1000, // 3000 milisegundos = 3 segundos
+        buttons: false, // Esto quita el botón "OK"
+      });
+      return false;
+    }
+    return true;
+  },
+
+
     // Método para agregar un producto al carrito
     addToCart(productId) {
+      if (!this.validateQuantitymax()) return;
+      if (!this.validateQuantitymin()) return;
       if (!this.token) {
         // Si el usuario no está autenticado, muestra un mensaje de error
 
@@ -107,6 +139,7 @@ export default {
           icon: "error",
           timer: 1000, // 3000 milisegundos = 3 segundos
           buttons: false, // Esto quita el botón "OK"
+          
         });
         return;
       }
@@ -116,6 +149,7 @@ export default {
         .post(`${this.baseURL}cart/add?token=${this.token}`, {
           productId: productId,
           quantity: this.quantity,
+          
         })
         .then(
           (response) => {
