@@ -27,7 +27,8 @@
           <p id="item-quantity" class="mb-0">
             Cantidad :
             <input size="1" class="p-0 h-25 border-bottom border-top-0 border-left-0 border-right-0"
-              v-model="cartItem.quantity" />
+              v-model="cartItem.quantity" @change="validateQuantity(cartItem)" />
+
           </p>
           <p id="item-total-price" class="mb-0">
             Precio Total:
@@ -93,19 +94,19 @@ export default {
       this.$router.push({ name: 'Checkout' });
     },
     deleteItem(itemId) {
-  axios.delete(`${this.baseURL}cart/delete/${itemId}?token=${this.token}`)
-    .then(response => {
-      // Manejo de la respuesta exitosa
-      if (response.status == 200) {
-        this.$router.go(0); // Recargar la página o actualizar la lista de elementos del carrito
-      }
-      this.$emit('fetchData');
-    })
-    .catch(error => {
-      // Manejo del error
-      console.log(error);
-    });
-},
+      axios.delete(`${this.baseURL}cart/delete/${itemId}?token=${this.token}`)
+        .then(response => {
+          // Manejo de la respuesta exitosa
+          if (response.status == 200) {
+            this.$router.go(0); // Recargar la página o actualizar la lista de elementos del carrito
+          }
+          this.$emit('fetchData');
+        })
+        .catch(error => {
+          // Manejo del error
+          console.log(error);
+        });
+    },
 
 
     showDetails(productId) {
@@ -113,6 +114,16 @@ export default {
         name: 'ShowDetails',
         params: { id: productId },
       });
+    },
+
+    validateQuantity(cartItem) {
+      if (cartItem.quantity < 1) {
+        swal("La cantidad mínima es 1.", { icon: "warning" });
+        cartItem.quantity = 1;
+      } else if (cartItem.quantity > cartItem.product.quantity) {
+        swal("La cantidad excede la cantidad disponible.", { icon: "warning" });
+        cartItem.quantity = cartItem.product.quantity;
+      }
     },
   },
   mounted() {
