@@ -12,6 +12,8 @@
         <p>
           {{ product.description }}
         </p>
+        <h6 id="cantidad" class="font-weight-bold">Cantidad Disponible: {{ product.quantity }}</h6>
+
 
         <div class="d-flex flex-row justify-content-between">
           <div class="input-group col-md-3 col-4 p-0">
@@ -19,6 +21,7 @@
               <span class="input-group-text" id="basic-addon1">Cantidad</span>
             </div>
             <input class="form-control" type="number" v-bind:value="quantity" />
+            
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
@@ -202,4 +205,15 @@ input[type="number"] {
   color: white;
   border-radius: 0;
 }
+
+.font-weight-bold {
+    color: #333; /* Elige el color que prefieras */
+    font-size: 1rem; /* Ajusta el tamaño de la fuente según necesites */
+    
+}
+
+#cantidad{
+  text-align: start;
+}
+
 </style>
