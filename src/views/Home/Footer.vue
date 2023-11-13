@@ -80,6 +80,6 @@ a {
 }
 
 #logo {
-  width: 150px;
+  width: 180px;
 }
 </style>
