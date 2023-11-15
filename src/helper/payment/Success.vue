@@ -22,7 +22,7 @@ export default {
         .then(() => {
           window.location.href = '/order'
         }).catch((error) => {
-          console.log(error);
+          //console.log(error);
         })
     }
   },
@@ -33,3 +33,4 @@ export default {
   }
 }
 </script>
+
