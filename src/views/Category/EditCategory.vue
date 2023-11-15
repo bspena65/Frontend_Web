@@ -39,24 +39,39 @@ export default {
   },
   props: ["baseURL", "categories"],
   methods: {
-    async editCategory() {
-      delete this.category["products"]
-      await axios.post(this.baseURL + "category/update/" + this.id, this.category)
-        .then(res => {
-          //sending the event to parent to handle
-          this.$emit("fetchData");
-          this.$router.push({ name: 'AdminCategory' });
-          swal({
-            text: "¡Categoría actualizada correctamente!",
-            icon: "success",
-            closeOnClickOutside: false,
-            timer: 1000, // 3000 milisegundos = 3 segundos
-            buttons: false, // Esto quita el botón "OK"
-          });
-        })
-        .catch(err => console.log(err));
-    }
-  },
+      // Método asincrónico para editar una categoría
+      async editCategory() {
+        // Eliminar la propiedad "products" del objeto category antes de enviar la solicitud
+        delete this.category["products"];
+
+        try {
+          // Enviar una solicitud POST para actualizar la categoría en el servidor
+          const response = await axios.post(this.baseURL + "category/update/" + this.id, this.category);
+
+          // Manejar la respuesta exitosa
+          if (response.status === 200) {
+            // Emitir un evento para notificar al componente padre que debe actualizar datos
+            this.$emit("fetchData");
+
+            // Redirigir a la página de administración de categorías
+            this.$router.push({ name: 'AdminCategory' });
+
+            // Mostrar una notificación de éxito usando la librería SweetAlert2
+            swal({
+              text: "¡Categoría actualizada correctamente!",
+              icon: "success",
+              closeOnClickOutside: false,
+              timer: 1000, // 1000 milisegundos = 1 segundo
+              buttons: false, // Esto quita el botón "OK"
+            });
+          }
+        } catch (error) {
+          // Manejar errores en la solicitud
+          console.log(error);
+        }
+      }
+    },
+
   mounted() {
     if (!localStorage.getItem('token')) {
       this.$router.push({ name: 'Signin' });
