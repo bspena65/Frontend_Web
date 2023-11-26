@@ -45,7 +45,7 @@
     <div id="start-shopping" class="container">
       <div class="row">
         <div class="col-12 text-left">
-          <h2 class="pt-3">Categorías principales</h2>
+          <h2 class="pt-3">{{ $t('message.options.title') }}</h2>
         </div>
       </div>
       <div class="row">
@@ -61,7 +61,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-left">
-          <h2 class="pt-3">Productos principales</h2>
+          <h2 class="pt-3">{{ $t('message.options.title1') }}</h2>
         </div>
       </div>
       <div class="row">
