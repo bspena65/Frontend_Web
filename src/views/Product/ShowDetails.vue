@@ -12,13 +12,16 @@
         <p>
           {{ product.description }}
         </p>
+        <h6 id="cantidad" class="font-weight-bold">Cantidad Disponible: {{ product.quantity }}</h6>
+
 
         <div class="d-flex flex-row justify-content-between">
           <div class="input-group col-md-3 col-4 p-0">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Cantidad</span>
             </div>
-            <input class="form-control" type="number" v-bind:value="quantity" />
+            <input class="form-control" type="number" v-model="quantity" />
+            
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
@@ -94,14 +97,49 @@ export default {
           }
         );
     },
+
+      // Método para validar la cantidad ingresada
+  validateQuantitymax() {
+    if (this.quantity > this.product.quantity) {
+      swal({
+        text: "La cantidad ingresada excede la cantidad disponible.",
+        icon: "warning",
+        timer: 1000, // 3000 milisegundos = 3 segundos
+        buttons: false, // Esto quita el botón "OK"
+      });
+      return false;
+    }
+    return true;
+  },
+
+        // Método para validar la cantidad ingresada
+    validateQuantitymin() {
+    if (this.quantity < 1) {
+      swal({
+        text: "La cantidad minima es 1.",
+        icon: "warning",
+        timer: 1000, // 3000 milisegundos = 3 segundos
+        buttons: false, // Esto quita el botón "OK"
+      });
+      return false;
+    }
+    return true;
+  },
+
+
     // Método para agregar un producto al carrito
     addToCart(productId) {
+      if (!this.validateQuantitymax()) return;
+      if (!this.validateQuantitymin()) return;
       if (!this.token) {
         // Si el usuario no está autenticado, muestra un mensaje de error
 
         swal({
           text: "¡Por favor ingresa primero!",
           icon: "error",
+          timer: 1000, // 3000 milisegundos = 3 segundos
+          buttons: false, // Esto quita el botón "OK"
+          
         });
         return;
       }
@@ -111,6 +149,7 @@ export default {
         .post(`${this.baseURL}cart/add?token=${this.token}`, {
           productId: productId,
           quantity: this.quantity,
+          
         })
         .then(
           (response) => {
@@ -119,6 +158,8 @@ export default {
                 text: "Producto añadido al carrito!",
                 icon: "success",
                 closeOnClickOutside: false,
+                timer: 1000, // 3000 milisegundos = 3 segundos
+                buttons: false, // Esto quita el botón "OK"
               });
               // Actualiza la barra de navegación llamando al evento personalizado "fetchData"
 
@@ -198,4 +239,15 @@ input[type="number"] {
   color: white;
   border-radius: 0;
 }
+
+.font-weight-bold {
+    color: #333; /* Elige el color que prefieras */
+    font-size: 1rem; /* Ajusta el tamaño de la fuente según necesites */
+    
+}
+
+#cantidad{
+  text-align: start;
+}
+
 </style>

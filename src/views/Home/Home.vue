@@ -21,7 +21,6 @@
         <li data-target="#imageCarousel" data-slide-to="1"></li>
         <li data-target="#imageCarousel" data-slide-to="2"></li>
         <li data-target="#imageCarousel" data-slide-to="3"></li>
-        <li data-target="#imageCarousel" data-slide-to="4"></li>
       </ol>
 
 
@@ -36,10 +35,7 @@
           <img class="carousel-image" src="../../assets/Home-Slider-3.png" alt="Imagen 3">
         </div>
         <div class="carousel-item">
-          <img class="carousel-image" src="../../assets/Home-Slider-2.png" alt="Imagen 3">
-        </div>
-        <div class="carousel-item">
-          <img class="carousel-image" src="../../assets/Home-Slider-4.png" alt="Imagen 3">
+          <img class="carousel-image" src="../../assets/Home-Slider-2.png" alt="Imagen 4">
         </div>
       </div>
 
@@ -49,7 +45,7 @@
     <div id="start-shopping" class="container">
       <div class="row">
         <div class="col-12 text-left">
-          <h2 class="pt-3">Categorías principales</h2>
+          <h2 class="pt-3">{{ $t('message.options.title') }}</h2>
         </div>
       </div>
       <div class="row">
@@ -65,7 +61,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-left">
-          <h2 class="pt-3">Productos principales</h2>
+          <h2 class="pt-3">{{ $t('message.options.title1') }}</h2>
         </div>
       </div>
       <div class="row">
@@ -101,7 +97,7 @@ export default {
 
     $(document).ready(function () {
       $('#imageCarousel').carousel({
-        interval: 2200 // Cambia la imagen cada 3 segundos (3000 milisegundos)
+        interval: 4000 // Cambia la imagen cada 3 segundos (3000 milisegundos)
       });
     });
   }
@@ -113,11 +109,10 @@ export default {
   min-height: 100vh;
 }
 
+
 .carousel-image {
-  width: 100%;
-  /* Ancho deseado, puedes usar porcentaje o píxeles */
-  height: 480px;
-  /* El valor "auto" mantiene la proporción de aspecto */
+  width: 100%;/* Ancho deseado, puedes usar porcentaje o píxeles */
+  height: 480px;/* El valor "auto" mantiene la proporción de aspecto */
 }
 
 
@@ -135,5 +130,11 @@ export default {
 
 h2 {
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+
+.pt-3{
+  text-align: center;
+
 }
 </style>

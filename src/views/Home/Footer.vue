@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="container pt-5">
-      <div class="row">
+      <div class="row1">
         <div class="col-md-3 col-6">
           <ul style="list-style-type: none">
             <li class="text-light font-weight-bold pb-2">Conózcanos</li>
@@ -21,7 +21,7 @@
         </div>
 
 
-        <div class="col-md-3 col-6">
+        <div class="col-md-3 col-5">
           <ul style="list-style-type: none">
             <li class="text-light font-weight-bold">Déjenos ayudarle</li>
             <li><a class="footer-link font-weight-light" href="#">Centro de devoluciones</a></li>
@@ -30,15 +30,13 @@
             <li><a class="footer-link font-weight-light" href="#">Descarga de aplicacion</a><br></li>
           </ul>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-12">
-          <div class="text-center py-5">
+        <div class="col-md-3 col-5">
             <img id="logo" src="../../assets/Logo1.1.png" />
-          </div>
         </div>
       </div>
+
+    
     </div>
   </footer>
 </template>
@@ -55,7 +53,14 @@ footer {
   background-color: #0c5564;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
-
+}
+.row1{
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;  /* Cambia la dirección a columna */
+  justify-content: space-evenly;
+  align-items: center;  /* Centra los elementos verticalmente */
 }
 
 li {
@@ -75,6 +80,6 @@ a {
 }
 
 #logo {
-  width: 150px;
+  width: 180px;
 }
 </style>

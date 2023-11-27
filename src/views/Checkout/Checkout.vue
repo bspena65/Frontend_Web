@@ -57,6 +57,7 @@ export default {
     },
 
     goToCheckout() {
+      console.log(this.checkoutBodyArray); 
       axios
         .post(
           this.baseURL + 'order/create-checkout-session',
@@ -78,7 +79,10 @@ export default {
     this.token = localStorage.getItem('token');
     // get all the cart items
     this.stripe = Stripe(this.stripeAPIToken);
-    this.getAllItems();
+    //this.getAllItems();
+    this.getAllItems().then(() => {
+    this.goToCheckout();
+  });
   },
 };
 </script>

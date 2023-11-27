@@ -26,6 +26,11 @@
             <input type="text" class="form-control" v-model="description" required>
           </div>
           <div class="form-group">
+            <label>Cantidad</label>
+            <input type="number" class="form-control" v-model="quantity" required>
+          </div>
+
+          <div class="form-group">
             <label>Imagen</label>
             <input type="url" class="form-control" v-model="imageURL" required>
           </div>
@@ -52,7 +57,9 @@ export default {
       name: null,
       description: null,
       imageURL: null,
-      price: null
+      price: null,
+      quantity: null
+
     }
   },
   // Define las propiedades esperadas que se pasan al componente
@@ -68,7 +75,9 @@ export default {
         name: this.name,
         description: this.description,
         imageURL: this.imageURL,
-        price: this.price
+        price: this.price,
+        quantity: this.quantity
+
       }
 
       // Realiza una solicitud POST para agregar el nuevo producto al servidor
@@ -92,6 +101,8 @@ export default {
             text: "¡Producto agregado exitosamente!",
             icon: "success",
             closeOnClickOutside: false,
+            timer: 1000, // 3000 milisegundos = 3 segundos
+            buttons: false, // Esto quita el botón "OK"
           });
         })
         .catch(err => console.log(err));
