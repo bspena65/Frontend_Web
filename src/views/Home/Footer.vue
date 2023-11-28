@@ -25,7 +25,7 @@
           <ul style="list-style-type: none">
             <li class="text-light font-weight-bold">{{ $t('message.options.f9') }}</li>
             <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f10') }}</a></li>
-            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.11') }}</a><br></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f11') }}</a><br></li>
             <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f12') }}</a><br></li>
             <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f13') }}</a><br></li>
           </ul>
