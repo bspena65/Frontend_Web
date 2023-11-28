@@ -57,7 +57,7 @@
             <router-link class="nav-link text-light" v-else :to="{ name: 'Wishlist' }">{{ $t('message.options.wishes') }}</router-link>
 
             <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
-            <router-link class="nav-link text-light" v-if="token" :to="{ name: 'Admin' }">{{ $t('message.options.admin') }}</router-link>
+            <router-link class="nav-link text-light" v-if="token && isAdmin" :to="{ name: 'Admin' }">{{ $t('message.options.admin') }}</router-link>
 
             <!-- Enlace para ir a la página "Iniciar Sesión" si el usuario no está autenticado (token no existe) -->
             <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.signin') }}</router-link>
@@ -95,7 +95,14 @@ export default {
   data() {
     return {
       token: null,
+      userRole: null,
     };
+  },
+  computed: {
+    isAdmin() {
+      const userRole = localStorage.getItem("userRole");
+      return userRole === 'admin';    
+    }
   },
   methods: {
     signout() {
@@ -128,6 +135,7 @@ export default {
   },
   mounted() {
     this.token = localStorage.getItem("token");
+    this.userRole = localStorage.getItem("userRole");
   },
 };
 </script>
