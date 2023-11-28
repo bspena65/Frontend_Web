@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
+import vue3GoogleLogin from 'vue3-google-login'
 
 import swal from 'sweetalert'
 
@@ -29,4 +30,10 @@ const i18n = createI18n({
 const app = createApp(App);
 app.use(router);
 app.use(i18n); // Usa vue-i18n
+
+app.use(vue3GoogleLogin, {
+  clientId: '344478746020-qs8c5d77nlcre272g2had4m5v6pjej41.apps.googleusercontent.com'
+})
+
 app.mount('#app');
+
