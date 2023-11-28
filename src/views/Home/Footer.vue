@@ -4,30 +4,30 @@
       <div class="row1">
         <div class="col-md-3 col-6">
           <ul style="list-style-type: none">
-            <li class="text-light font-weight-bold pb-2">Conózcanos</li>
-            <li><a class="footer-link font-weight-light" href="#">Quiénes somos</a></li>
-            <li><a class="footer-link font-weight-light" href="#">Aplicación Android</a><br></li>
-            <li><a class="footer-link font-weight-light" href="#">Aplicación iOS</a><br></li>
+            <li class="text-light font-weight-bold pb-2">{{ $t('message.options.f1') }}</li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f2') }}</a></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f3') }}</a><br></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f4') }}</a><br></li>
           </ul>
         </div>
 
         <div class="col-md-3 col-6">
           <ul style="list-style-type: none">
-            <li class="text-light font-weight-bold">Conéctese con nosotros</li>
-            <li><a class="footer-link font-weight-light" href="#">Facebook</a></li>
-            <li><a class="footer-link font-weight-light" href="#">Twitter</a><br></li>
-            <li><a class="footer-link font-weight-light" href="#">Instagram</a><br></li>
+            <li class="text-light font-weight-bold">{{ $t('message.options.f5') }}</li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f6') }}</a></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f7') }}</a><br></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f8') }}</a><br></li>
           </ul>
         </div>
 
 
         <div class="col-md-3 col-5">
           <ul style="list-style-type: none">
-            <li class="text-light font-weight-bold">Déjenos ayudarle</li>
-            <li><a class="footer-link font-weight-light" href="#">Centro de devoluciones</a></li>
-            <li><a class="footer-link font-weight-light" href="#">100% de protección en la compra</a><br></li>
-            <li><a class="footer-link font-weight-light" href="#">Ayuda</a><br></li>
-            <li><a class="footer-link font-weight-light" href="#">Descarga de aplicacion</a><br></li>
+            <li class="text-light font-weight-bold">{{ $t('message.options.f9') }}</li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f10') }}</a></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f11') }}</a><br></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f12') }}</a><br></li>
+            <li><a class="footer-link font-weight-light" href="#">{{ $t('message.options.f13') }}</a><br></li>
           </ul>
         </div>
 
