@@ -40,7 +40,7 @@
               <label> Email: {{ user.email }} </label><br>
               <img :src="user.picture" />
             </div>
-            <div v-else>
+            <div class="p" v-else>
               <GoogleLogin :callback="callback" prompt />
             </div>
 
@@ -177,5 +177,10 @@ export default {
   #signin-div {
     width: 40%;
   }
+}
+.p{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 </style>
