@@ -89,9 +89,7 @@ export default {
         this.password = dataG.pass 
         this.email = dataG.mail
 
-
-        console.log(this.email);
-
+        //console.log(this.email);
 
         this.$nextTick(() => {
           this.$refs.signinForm.dispatchEvent(new Event("submit"));
