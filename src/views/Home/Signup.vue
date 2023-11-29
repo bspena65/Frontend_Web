@@ -16,25 +16,25 @@
           <form @submit="signup" class="pt-4 pl-4 pr-4">
             <div class="form-group">
               <label>Correo electronico</label>
-              <input type="email" class="form-control" v-model="email" required />
+              <input type="email" name="email" class="form-control" v-model="email" required />
             </div>
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
                   <label>Apellido</label>
-                  <input type="name" class="form-control" v-model="firstName" required />
+                  <input type="name" name="firstName" class="form-control" v-model="firstName" required />
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label>Nombre</label>
-                  <input type="name" class="form-control" v-model="lastName" required />
+                  <input type="name" name="lastName"  class="form-control" v-model="lastName" required />
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label>Contraseña</label>
-              <input type="password" class="form-control" v-model="password" required />
+              <input type="password" class="form-control"  name="password" v-model="password" required />
             </div>
             <div class="form-group">
               <label>Confirmar Contraseña</label>
