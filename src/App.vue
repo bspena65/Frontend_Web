@@ -14,7 +14,7 @@ import Footer from '././views/Home/Footer.vue'
 export default {
   data() {
     return {
-      baseURL: "http://localhost:8082/",
+      baseURL: "http://localhost:8083/",
       products: null,
       categories: null,
       key: 0,
