@@ -19,7 +19,6 @@ describe('<Signup />', () => {
     // Verificar que el botón de "Crear Cuenta" esté presente
     cy.get('button[type="submit"]').should('exist')
 
-    // Verificar que el enlace "Inicia Sesión aquí" esté presente
 
   })
 

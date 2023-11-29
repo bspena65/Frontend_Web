@@ -5,7 +5,7 @@
 
       <!--Logo-->
       <router-link class="navbar-brand" :to="{ name: 'Home' }">
-        <img id="logo" src="../../assets/Logo1.1.png" />
+        <img id="logo" alt="D" src="../../assets/Logo1.1.png" />
       </router-link>
 
       <!--    Burger Button-->
@@ -23,8 +23,8 @@
           <!--      Search Bar-->
           <form class="form-inline ml-auto mr-auto">
             <div class="input-group">
-              <input size="90" type="text" class="form-control" :placeholder="$t('message.options.placeholder')" aria-label="Username"
-                aria-describedby="basic-addon1" />
+              <input size="90" type="text" class="form-control" :placeholder="$t('message.options.placeholder')"
+                aria-label="Username" />
               <div class="input-group-prepend">
                 <span class="input-group-text" id="search-button-navbar">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -46,34 +46,44 @@
 
           <li class="nav-item">
 
-            <router-link class="nav-link text-light" :to="{ name: 'Home' }">{{ $t('message.options.start') }}</router-link>
+            <router-link class="nav-link text-light" :to="{ name: 'Home' }">{{ $t('message.options.start')
+            }}</router-link>
             <router-link class="nav-link text-light" :to="{ name: 'Product' }">{{ $t('message.options.product') }}
             </router-link>
-            <router-link class="nav-link text-light" :to="{ name: 'Category' }">{{ $t('message.options.category') }}</router-link>
+            <router-link class="nav-link text-light" :to="{ name: 'Category' }">{{ $t('message.options.category')
+            }}</router-link>
             <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->
-            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.wishes') }}</router-link>
+            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{
+              $t('message.options.wishes') }}</router-link>
 
             <!-- Enlace para ir a la página "Deseos" si el usuario está autenticado (token existe) -->
-            <router-link class="nav-link text-light" v-else :to="{ name: 'Wishlist' }">{{ $t('message.options.wishes') }}</router-link>
+            <router-link class="nav-link text-light" v-else :to="{ name: 'Wishlist' }">{{ $t('message.options.wishes')
+            }}</router-link>
 
             <!-- Enlace para ir a la página "Admin" si el usuario está autenticado y tiene acceso de administrador (isLoggedIn es verdadero) -->
-            <router-link class="nav-link text-light" v-if="token && isAdmin" :to="{ name: 'Admin' }">{{ $t('message.options.admin') }}</router-link>
+            <router-link class="nav-link text-light" v-if="token && isAdmin" :to="{ name: 'Admin' }">{{
+              $t('message.options.admin') }}</router-link>
 
             <!-- Enlace para ir a la página "Iniciar Sesión" si el usuario no está autenticado (token no existe) -->
-            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.signin') }}</router-link>
+            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{
+              $t('message.options.signin') }}</router-link>
 
             <!-- Enlace para ir a la página "Registrarse" si el usuario no está autenticado (token no existe) -->
-            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signup' }">{{ $t('message.options.signup') }}</router-link>
+            <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signup' }">{{
+              $t('message.options.signup') }}</router-link>
 
             <!-- Enlace para cerrar la sesión del usuario si está autenticado (token existe) -->
             <a class="nav-link text-light" v-if="token" href="#" @click="signout">{{ $t('message.options.signoff') }}</a>
-            <router-link class="nav-link text-light" :to="{ name: 'Order' }">{{ $t('message.options.orders') }}</router-link>
+            <router-link class="nav-link text-light" :to="{ name: 'Order' }">{{ $t('message.options.orders')
+            }}</router-link>
           </li>
 
           <li class="nav-item">
             <div id="cart">
               <span id="nav-cart-count">{{ cartCount }}</span>
-              <router-link class="text-light" :to="{ name: 'Cart' }"><i class="fa fa-shopping-cart" style="font-size:36px"></i></router-link>
+              <router-link class="text-light" :to="{ name: 'Cart' }" aria-label="Ver carrito de compras">
+                <i class="fa fa-shopping-cart" style="font-size:36px"></i>
+              </router-link>
             </div>
           </li>
 
@@ -89,8 +99,8 @@ import LanguageSwitcher from '../Home/LanguageSwitcher.vue'
 export default {
   name: "Navbar",
   props: ["cartCount"],
-  components:{
-  LanguageSwitcher
+  components: {
+    LanguageSwitcher
   },
   data() {
     return {
@@ -101,7 +111,7 @@ export default {
   computed: {
     isAdmin() {
       const userRole = localStorage.getItem("userRole");
-      return userRole === 'admin';    
+      return userRole === 'admin';
     }
   },
   methods: {
@@ -146,25 +156,30 @@ export default {
 .mynav {
   background-color: #0c5564;
   display: flex;
-  flex-direction: row;  /* Cambia la dirección a columna */
+  flex-direction: row;
+  /* Cambia la dirección a columna */
   justify-content: space-evenly;
-  align-items: center;  /* Centra los elementos verticalmente */
+  align-items: center;
+  /* Centra los elementos verticalmente */
 }
 
-.search{
+.search {
   display: flex;
-  flex-direction: row;  /* Cambia la dirección a columna */
+  flex-direction: row;
+  /* Cambia la dirección a columna */
   justify-content: space-evenly;
-  align-items: center;  /* Centra los elementos verticalmente */
+  align-items: center;
+  /* Centra los elementos verticalmente */
 }
 
-.lenguaje{
+.lenguaje {
   margin-left: 30px;
 }
 
 #logo {
   width: 200px;
-  margin: 20px auto;   /*Espaciado alrededor del logo */
+  margin: 20px auto;
+  /*Espaciado alrededor del logo */
 
   /*margin-top: 15px;
   margin-bottom: 15px;
@@ -175,12 +190,15 @@ export default {
 
 .navcolumn {
   display: flex;
-  flex-direction: column;/* Cambia la dirección a columna */
-  align-items: center;/* Centra los elementos verticalmente */
+  flex-direction: column;
+  /* Cambia la dirección a columna */
+  align-items: center;
+  /* Centra los elementos verticalmente */
 }
 
 .enlace {
-  margin-top: 20px;  /* Espaciado entre el logo y los enlaces */
+  margin-top: 20px;
+  /* Espaciado entre el logo y los enlaces */
 }
 
 .nav-link {
@@ -205,26 +223,31 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px; /* Aumenta el ancho para acomodar el contenido */
-  height: 22px; /* Aumenta el alto para acomodar el contenido */
+  width: 20px;
+  /* Aumenta el ancho para acomodar el contenido */
+  height: 22px;
+  /* Aumenta el alto para acomodar el contenido */
   font-size: 20px;
   position: absolute;
-  top: -5px; /* Ajusta la posición vertical */
-  right: -5px; /* Ajusta la posición horizontal */
+  top: -5px;
+  /* Ajusta la posición vertical */
+  right: -5px;
+  /* Ajusta la posición horizontal */
 }
 
 #cart {
   position: relative;
-  display: flex;  /* Mantén el estilo del carrito como una fila */
-  align-items: center;  /* Centra verticalmente el icono del carrito */
+  display: flex;
+  /* Mantén el estilo del carrito como una fila */
+  align-items: center;
+  /* Centra verticalmente el icono del carrito */
 }
 
 #cart i {
-  font-size: 36px;  /* Restaura el estilo del icono del carrito */
-  color: white;  /* Cambia el color del icono del carrito si es necesario */
+  font-size: 36px;
+  /* Restaura el estilo del icono del carrito */
+  color: white;
+  /* Cambia el color del icono del carrito si es necesario */
 
-}
-
-
-</style>
+}</style>
 
