@@ -90,14 +90,14 @@ export default {
   },
   mounted() {
     this.category_size = this.categories.length;
-    this.category_size = Math.min(6, this.category_size);
+    this.category_size = Math.min(3, this.category_size);
 
     this.product_size = this.products.length;
-    this.product_size = Math.min(8, this.product_size);
+    this.product_size = Math.min(6, this.product_size);
 
     $(document).ready(function () {
       $('#imageCarousel').carousel({
-        interval: 4000 // Cambia la imagen cada 3 segundos (3000 milisegundos)
+        interval: 4000 // Cambia la imagen cada 4 segundos (4000 milisegundos)
       });
     });
   }
@@ -119,7 +119,7 @@ export default {
 #heading {
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   opacity: 0.8;
   font-family: 'Josefin Sans', sans-serif;
 }
