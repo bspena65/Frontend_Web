@@ -16,25 +16,25 @@
           <form @submit="signup" class="pt-4 pl-4 pr-4">
             <div class="form-group">
               <label>Correo electronico</label>
-              <input type="email" class="form-control" v-model="email" required />
+              <input type="email" name="email" class="form-control" v-model="email" required />
             </div>
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
-                  <label>Apellido</label>
-                  <input type="name" class="form-control" v-model="firstName" required />
+                  <label>Nombre</label>
+                  <input type="name" name="Name" class="form-control" v-model="name" required />
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
-                  <label>Nombre</label>
-                  <input type="name" class="form-control" v-model="lastName" required />
+                  <label>Apellido</label>
+                  <input type="name" name="lastName" class="form-control" v-model="lastName" required />
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label>Contraseña</label>
-              <input type="password" class="form-control" v-model="password" required />
+              <input type="password" class="form-control" name="password" v-model="password" required />
             </div>
             <div class="form-group">
               <label>Confirmar Contraseña</label>
@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       email: null,
-      firstName: null,
+      name: null,
       lastName: null,
       password: null,
       passwordConfirm: null,
@@ -72,38 +72,54 @@ export default {
   methods: {
     async signup(e) {
       e.preventDefault();
-      // if the password matches
       if (this.password === this.passwordConfirm) {
-        // make the post body
         const user = {
           email: this.email,
-          firstName: this.firstName,
+          name: this.name,
           lastName: this.lastName,
           password: this.password,
         };
 
-        await axios
-          .post(`${this.baseURL}user/signup`, user)
+
+        await axios.post(`${this.baseURL}user/signup`, user)
           .then(() => {
             this.$router.replace("/");
             swal({
               text: "Registro de usuario exitoso. Por favor Iniciar sesión",
               icon: "success",
               closeOnClickOutside: false,
-              timer: 2000, // 3000 milisegundos = 3 segundos
-              buttons: false, // Esto quita el botón "OK"
+              timer: 2000,
+              buttons: false,
             });
           })
           .catch((err) => {
-            console.log(err);
+            // Aquí manejas el error específico para un usuario ya registrado
+            if (err.response && err.response.status === 409) {
+              swal({
+                text: "El correo electrónico ya está registrado.",
+                icon: "warning",
+                closeOnClickOutside: false,
+                timer: 2000,
+                buttons: false,
+              });
+            } else {
+              // Manejo de otros tipos de errores
+              swal({
+                text: "Ocurrió un error al registrar el usuario.",
+                icon: "error",
+                closeOnClickOutside: false,
+                timer: 2000,
+                buttons: false,
+              });
+            }
           });
       } else {
         swal({
           text: "¡Error! Las contraseñas no coinciden",
           icon: "error",
           closeOnClickOutside: false,
-          timer: 2000, // 3000 milisegundos = 3 segundos
-          buttons: false, // Esto quita el botón "OK"
+          timer: 2000,
+          buttons: false,
         });
       }
     },
