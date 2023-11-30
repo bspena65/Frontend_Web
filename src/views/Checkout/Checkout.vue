@@ -57,7 +57,7 @@ export default {
     },
 
     goToCheckout() {
-      console.log(this.checkoutBodyArray); 
+      console.log(this.checkoutBodyArray);
       axios
         .post(
           this.baseURL + 'order/create-checkout-session',
@@ -81,8 +81,8 @@ export default {
     this.stripe = Stripe(this.stripeAPIToken);
     //this.getAllItems();
     this.getAllItems().then(() => {
-    this.goToCheckout();
-  });
+      this.goToCheckout();
+    });
   },
 };
 </script>
