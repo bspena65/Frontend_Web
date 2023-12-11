@@ -15,12 +15,18 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-
+      
+      <!-- Indicadores del Carrusel -->
       <ol class="carousel-indicators">
+        <!-- Indicador para la primera diapositiva (índice 0), marcado como activo -->
         <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+        <!-- Indicador para la segunda diapositiva (índice 1) -->
         <li data-target="#imageCarousel" data-slide-to="1"></li>
+        <!-- Indicador para la tercera diapositiva (índice 2) -->
         <li data-target="#imageCarousel" data-slide-to="2"></li>
+        <!-- Indicador para la cuarta diapositiva (índice 3) -->
         <li data-target="#imageCarousel" data-slide-to="3"></li>
+        
       </ol>
 
 
@@ -89,18 +95,21 @@ export default {
     }
   },
   mounted() {
-    this.category_size = this.categories.length;
-    this.category_size = Math.min(6, this.category_size);
+      // Calcula el tamaño de la categoría y lo limita a un máximo de 6
+      this.category_size = this.categories.length;
+      this.category_size = Math.min(6, this.category_size);
 
-    this.product_size = this.products.length;
-    this.product_size = Math.min(8, this.product_size);
+      // Calcula el tamaño del producto y lo limita a un máximo de 8
+      this.product_size = this.products.length;
+      this.product_size = Math.min(8, this.product_size);
 
-    $(document).ready(function () {
-      $('#imageCarousel').carousel({
-        interval: 4000 // Cambia la imagen cada 3 segundos (3000 milisegundos)
+      // Configura el carrusel de imágenes con jQuery
+      $(document).ready(function () {
+        $('#imageCarousel').carousel({
+          interval: 4000 // Cambia la imagen cada 4 segundos (4000 milisegundos)
+        });
       });
-    });
-  }
+    }
 }
 </script>
 

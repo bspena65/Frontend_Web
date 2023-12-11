@@ -46,10 +46,15 @@
 
           <li class="nav-item">
 
+            <!-- Enlace de navegación a la ruta con nombre 'Home' -->
             <router-link class="nav-link text-light" :to="{ name: 'Home' }">{{ $t('message.options.start') }}</router-link>
-            <router-link class="nav-link text-light" :to="{ name: 'Product' }">{{ $t('message.options.product') }}
-            </router-link>
+
+            <!-- Enlace de navegación a la ruta con nombre 'Product' -->
+            <router-link class="nav-link text-light" :to="{ name: 'Product' }">{{ $t('message.options.product') }}</router-link>
+
+            <!-- Enlace de navegación a la ruta con nombre 'Category' -->
             <router-link class="nav-link text-light" :to="{ name: 'Category' }">{{ $t('message.options.category') }}</router-link>
+
             <!-- Enlace para ir a la página "Deseos" si el usuario no está autenticado (token no existe) -->
             <router-link class="nav-link text-light" v-if="!token" :to="{ name: 'Signin' }">{{ $t('message.options.wishes') }}</router-link>
 
@@ -106,32 +111,44 @@ export default {
   },
   methods: {
     signout() {
-      // Mostrar un cuadro de diálogo SweetAlert2 para confirmar la acción
+  // Mostrar un cuadro de diálogo SweetAlert2 para confirmar la acción
+  swal({
+    title: "¿Estás seguro?",
+    text: "¿Deseas cerrar la sesión?",
+    icon: "warning",
+    buttons: ["Cancelar", "Aceptar"],
+  })
+  .then((userConfirmed) => {
+    if (userConfirmed) {
+      // El usuario ha confirmado, proceder con el cierre de sesión
+
+      // Eliminar el token del almacenamiento local
+      localStorage.removeItem("token");
+
+      // Establecer la propiedad 'token' en null
+      this.token = null;
+
+      // Emitir un evento para restablecer el contador del carrito (si está implementado)
+      this.$emit("resetCartCount");
+
+      // Navegar a la ruta 'Home' utilizando el router de Vue.js
+      this.$router.push({ name: "Home" });
+
+      // Mostrar un mensaje de éxito con SweetAlert2
       swal({
-        title: "¿Estás seguro?",
-        text: "¿Deseas cerrar la sesión?",
-        icon: "warning",
-        buttons: ["Cancelar", "Aceptar"],
-      })
-        .then((userConfirmed) => {
-          if (userConfirmed) {
-            // El usuario ha confirmado, proceder con el cierre de sesión
-            localStorage.removeItem("token");
-            this.token = null;
-            this.$emit("resetCartCount");
-            this.$router.push({ name: "Home" });
-            swal({
-              text: "Cierre de sesión exitoso",
-              icon: "success",
-              closeOnClickOutside: false,
-              timer: 1000, // 3000 milisegundos = 3 segundos
-              buttons: false, // Esto quita el botón "OK"
-            });
-          } else {
-            // El usuario ha cancelado la acción, No es necesario hacer nada en este caso
-          }
-        });
-    },
+        text: "Cierre de sesión exitoso",
+        icon: "success",
+        closeOnClickOutside: false,
+        timer: 1000, // 1000 milisegundos = 1 segundo
+        buttons: false, // Esto quita el botón "OK"
+      });
+
+    } else {
+      // El usuario ha cancelado la acción, No es necesario hacer nada en este caso
+    }
+  });
+},
+
   },
   mounted() {
     this.token = localStorage.getItem("token");

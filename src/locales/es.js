@@ -27,8 +27,6 @@ export default {
       f11: "100% de protección en la compra",
       f12: "Ayuda",
       f13: "Descarga de aplicacion",
-
-
     }
   }
 }

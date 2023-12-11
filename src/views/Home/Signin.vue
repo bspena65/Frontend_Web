@@ -83,8 +83,7 @@ export default {
         console.log(decodeCredential(response.credential));
         this.user = decodeCredential(response.credential);
 
-        // Redirigir a la página de inicio
-        //this.$router.push({ name: 'Home' });
+        
 
         this.password = dataG.pass 
         this.email = dataG.mail
@@ -120,13 +119,15 @@ export default {
           this.$router.push({ name: "Home" });
         })
         .catch((err) => {
+          // Utiliza SweetAlert para mostrar un mensaje de error
           swal({
             text: "¡Error en credenciales, verifique e intente de nuevo!",
             icon: "error",
             closeOnClickOutside: false,
-            timer: 2000, // 3000 milisegundos = 3 segundos
-            buttons: false, // Esto quita el botón "OK"
+            timer: 2000,// Tiempo en milisegundos para que el mensaje se muestre (en este caso, 2 segundos)
+            buttons: false, // Desactiva el botón "OK"
           });
+          // Imprime el error en la consola para fines de depuración
           console.log(err);
         })
         .finally(() => {

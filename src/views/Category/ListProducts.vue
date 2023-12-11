@@ -9,8 +9,10 @@
 
     <div class="row">
       <img v-show="len == 0" class="img-fluid" src="../../assets/sorry.jpg" alt="Sorry">
+       <!-- Iteración sobre los productos de la categoría -->
       <div v-for="product of category.products" :key="product.id"
         class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
+        <!-- Componente ProductBox para cada producto -->
         <ProductBox :product="product">
         </ProductBox>
       </div>
@@ -18,35 +20,44 @@
   </div>
 </template>
 
+<!-- Proceso y llamado componente -->
 <script>
-import ProductBox from '../../components/Product/ProductBox';
-export default {
-  name: 'ListProducts',
-  data() {
-    return {
-      id: null,
-      categoryIndex: null,
-      category: {},
-      len: 0,
-      msg: null
-    }
-  },
-  components: { ProductBox },
-  props: ["baseURL", "categories"],
-  mounted() {
-    this.id = this.$route.params.id;
-    this.categoryIndex = this.categories.findIndex(category => category.id == this.id);
-    this.category = this.categories[this.categoryIndex];
+  import ProductBox from '../../components/Product/ProductBox';
+  export default {
+    name: 'ListProducts',
+    data() {
+      return {
+        id: null,
+        categoryIndex: null,
+        category: {},
+        len: 0,
+        msg: null
+      }
+    },
+    components: { ProductBox },
+    props: ["baseURL", "categories"],
+    mounted() {
+      // Obtener el ID de la categoría desde los parámetros de la ruta
+      this.id = this.$route.params.id;
 
-    this.len = this.category.products.length;
-    if (this.len == 0) {
-      this.msg = "Lo sentimos, no se encontraron productos";
-    } else if (this.len == 1) {
-      this.msg = "Sólo se encontró 1 producto";
-    } else {
-      this.msg = this.len + " productos encontrados";
+      // Encontrar el índice de la categoría en el array de categorías
+      this.categoryIndex = this.categories.findIndex(category => category.id == this.id);
+
+      // Obtener la categoría actual
+      this.category = this.categories[this.categoryIndex];
+
+      // Calcular la longitud de los productos en la categoría
+      this.len = this.category.products.length;
+
+      // Establecer el mensaje en base a la cantidad de productos encontrados
+      if (this.len == 0) {
+        this.msg = "Lo sentimos, no se encontraron productos";
+      } else if (this.len == 1) {
+        this.msg = "Sólo se encontró 1 producto";
+      } else {
+        this.msg = this.len + " productos encontrados";
+      }
     }
-  }
 }
 </script>
 

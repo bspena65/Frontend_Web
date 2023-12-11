@@ -16,6 +16,7 @@
         Editar
       </router-link>
     </div>
+    
   </div>
 </template>
 
@@ -25,6 +26,7 @@ export default {
   props: ["category"],
   methods: {
     listProducts() {
+      // Navega a la ruta "ListProducts" con el parámetro "id" igual al ID de la categoría actual
       this.$router.push({
         name: "ListProducts",
         params: { id: this.category.id },
@@ -33,6 +35,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .embed-responsive .card-img-top {
